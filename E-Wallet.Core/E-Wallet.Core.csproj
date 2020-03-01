@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>E_Wallet.Core</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.2" />
+    <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="3.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\DTO\" />
+  </ItemGroup>
+
+</Project>

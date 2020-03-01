@@ -1,0 +1,5 @@
+E:\Documents\Projects\Indeed Id\Project\src\E-Wallet\E-Wallet.Infrastructure\bin\Debug\netcoreapp3.1\E-Wallet.Infrastructure.deps.json
+E:\Documents\Projects\Indeed Id\Project\src\E-Wallet\E-Wallet.Infrastructure\bin\Debug\netcoreapp3.1\E-Wallet.Infrastructure.dll
+E:\Documents\Projects\Indeed Id\Project\src\E-Wallet\E-Wallet.Infrastructure\obj\Debug\netcoreapp3.1\E-Wallet.Infrastructure.csprojAssemblyReference.cache
+E:\Documents\Projects\Indeed Id\Project\src\E-Wallet\E-Wallet.Infrastructure\obj\Debug\netcoreapp3.1\E-Wallet.Infrastructure.AssemblyInfoInputs.cache
+E:\Documents\Projects\Indeed Id\Project\src\E-Wallet\E-Wallet.Infrastructure\obj\Debug\netcoreapp3.1\E-Wallet.Infrastructure.AssemblyInfo.cs
