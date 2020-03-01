@@ -1,12 +1,10 @@
 ﻿using System.Collections.Generic;
 
-namespace E_Wallet.Core.Models.Domain
+namespace EWallet.Core.Models.Domain
 {
     public class Wallet : IEntity<string>
     {
         public string Id { get; set; }
-
-
 
         public Wallet()
         {
@@ -22,11 +20,4 @@ namespace E_Wallet.Core.Models.Domain
         #endregion
 
     }
-
-
-
-
-
-
-
 }

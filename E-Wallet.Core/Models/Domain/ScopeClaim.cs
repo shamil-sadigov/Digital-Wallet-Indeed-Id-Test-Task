@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Security.Claims;
-using System.Text;
+﻿using System.Security.Claims;
 
-namespace E_Wallet.Core.Models.Domain
+namespace EWallet.Core.Models.Domain
 {
-    public class ScopeClaim:IEntity<string>
+    public class ScopeClaim : IEntity<string>
     {
         public string Id { get; set; }
         public string Permission { get; set; }
         public bool Allowed { get; set; }
 
-        public byte ScopeId { get; set; }
-        public Scope Scope { get; set; }
 
         /// <summary>
         /// Ctor for EF Core
@@ -28,6 +23,13 @@ namespace E_Wallet.Core.Models.Domain
             Allowed = allowed;
         }
 
+
+        #region Navigration Properties
+
+        public string ScopeId { get; set; }
+        public Scope Scope { get; set; }
+
+        #endregion
 
         public static explicit operator Claim(ScopeClaim scopeClaim)
         {

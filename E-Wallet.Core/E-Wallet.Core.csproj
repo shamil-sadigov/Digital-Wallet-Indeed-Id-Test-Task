@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>E_Wallet.Core</RootNamespace>
+    <RootNamespace>EWallet.Core</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

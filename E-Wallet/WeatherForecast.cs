@@ -1,6 +1,6 @@
 using System;
 
-namespace E_Wallet
+namespace EWallet
 {
     public class WeatherForecast
     {

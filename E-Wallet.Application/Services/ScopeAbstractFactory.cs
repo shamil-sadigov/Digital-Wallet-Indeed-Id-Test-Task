@@ -1,6 +1,7 @@
-﻿using E_Wallet.Core.Models.Domain;
+﻿using EWallet.Core.Models.Domain;
+using EWallet.Core.Services.Application;
 
-namespace E_Wallet.Aplication.Services
+namespace EWallet.Aplication.Services
 {
     public class ScopeAbstractFactory: IScopeAbstractFactory
     {

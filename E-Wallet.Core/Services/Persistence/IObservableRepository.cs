@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace E_Wallet.Core.Services.Persistence
+namespace EWallet.Core.Services.Persistence
 {
     public interface IObservableRepository<T> where T : class
     {

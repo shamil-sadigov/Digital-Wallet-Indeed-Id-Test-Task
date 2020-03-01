@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace E_Wallet.Controllers
+namespace EWallet.Controllers
 {
     [ApiController]
     [Route("[controller]")]

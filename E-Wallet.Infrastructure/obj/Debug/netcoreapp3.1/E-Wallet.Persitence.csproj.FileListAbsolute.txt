@@ -1,0 +1,13 @@
+E:\Documents\Projects\Indeed Id\Project\src\E-Wallet\E-Wallet.Infrastructure\bin\Debug\netcoreapp3.1\E-Wallet.Persitence.deps.json
+E:\Documents\Projects\Indeed Id\Project\src\E-Wallet\E-Wallet.Infrastructure\bin\Debug\netcoreapp3.1\E-Wallet.Persitence.dll
+E:\Documents\Projects\Indeed Id\Project\src\E-Wallet\E-Wallet.Infrastructure\bin\Debug\netcoreapp3.1\E-Wallet.Persitence.pdb
+E:\Documents\Projects\Indeed Id\Project\src\E-Wallet\E-Wallet.Infrastructure\obj\Debug\netcoreapp3.1\E-Wallet.Persitence.csprojAssemblyReference.cache
+E:\Documents\Projects\Indeed Id\Project\src\E-Wallet\E-Wallet.Infrastructure\obj\Debug\netcoreapp3.1\E-Wallet.Persitence.AssemblyInfoInputs.cache
+E:\Documents\Projects\Indeed Id\Project\src\E-Wallet\E-Wallet.Infrastructure\obj\Debug\netcoreapp3.1\E-Wallet.Persitence.AssemblyInfo.cs
+E:\Documents\Projects\Indeed Id\Project\src\E-Wallet\E-Wallet.Infrastructure\obj\Debug\netcoreapp3.1\E-Wallet.Persitence.dll
+E:\Documents\Projects\Indeed Id\Project\src\E-Wallet\E-Wallet.Infrastructure\obj\Debug\netcoreapp3.1\E-Wallet.Persitence.pdb
+E:\Documents\Projects\Indeed Id\Project\src\E-Wallet\E-Wallet.Infrastructure\bin\Debug\netcoreapp3.1\E-Wallet.Core.dll
+E:\Documents\Projects\Indeed Id\Project\src\E-Wallet\E-Wallet.Infrastructure\bin\Debug\netcoreapp3.1\E-Wallet.Persitence.runtimeconfig.json
+E:\Documents\Projects\Indeed Id\Project\src\E-Wallet\E-Wallet.Infrastructure\bin\Debug\netcoreapp3.1\E-Wallet.Persitence.runtimeconfig.dev.json
+E:\Documents\Projects\Indeed Id\Project\src\E-Wallet\E-Wallet.Infrastructure\bin\Debug\netcoreapp3.1\E-Wallet.Core.pdb
+E:\Documents\Projects\Indeed Id\Project\src\E-Wallet\E-Wallet.Infrastructure\obj\Debug\netcoreapp3.1\E-Wallet.Persitence.csproj.CopyComplete

@@ -1,0 +1,11 @@
+E:\Documents\Projects\Indeed Id\Project\src\E-Wallet\E-Wallet.Application\bin\Debug\netcoreapp3.1\E-Wallet.Application.deps.json
+E:\Documents\Projects\Indeed Id\Project\src\E-Wallet\E-Wallet.Application\bin\Debug\netcoreapp3.1\E-Wallet.Application.dll
+E:\Documents\Projects\Indeed Id\Project\src\E-Wallet\E-Wallet.Application\bin\Debug\netcoreapp3.1\E-Wallet.Application.pdb
+E:\Documents\Projects\Indeed Id\Project\src\E-Wallet\E-Wallet.Application\bin\Debug\netcoreapp3.1\E-Wallet.Core.dll
+E:\Documents\Projects\Indeed Id\Project\src\E-Wallet\E-Wallet.Application\bin\Debug\netcoreapp3.1\E-Wallet.Core.pdb
+E:\Documents\Projects\Indeed Id\Project\src\E-Wallet\E-Wallet.Application\obj\Debug\netcoreapp3.1\E-Wallet.Application.csprojAssemblyReference.cache
+E:\Documents\Projects\Indeed Id\Project\src\E-Wallet\E-Wallet.Application\obj\Debug\netcoreapp3.1\E-Wallet.Application.AssemblyInfoInputs.cache
+E:\Documents\Projects\Indeed Id\Project\src\E-Wallet\E-Wallet.Application\obj\Debug\netcoreapp3.1\E-Wallet.Application.AssemblyInfo.cs
+E:\Documents\Projects\Indeed Id\Project\src\E-Wallet\E-Wallet.Application\obj\Debug\netcoreapp3.1\E-Wallet.Application.csproj.CopyComplete
+E:\Documents\Projects\Indeed Id\Project\src\E-Wallet\E-Wallet.Application\obj\Debug\netcoreapp3.1\E-Wallet.Application.dll
+E:\Documents\Projects\Indeed Id\Project\src\E-Wallet\E-Wallet.Application\obj\Debug\netcoreapp3.1\E-Wallet.Application.pdb

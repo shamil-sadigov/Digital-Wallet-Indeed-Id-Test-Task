@@ -1,4 +1,4 @@
-﻿namespace E_Wallet.Core.Models.Domain
+﻿namespace EWallet.Core.Models.Domain
 {
     public static class ScopeConstants
     {

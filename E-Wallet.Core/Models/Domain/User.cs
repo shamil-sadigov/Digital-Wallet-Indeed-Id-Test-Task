@@ -2,30 +2,14 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
-namespace E_Wallet.Core.Models.Domain
+namespace EWallet.Core.Models.Domain
 {
-
-    public interface IEntity<T>
-    {
-        T Id { get; set; }
-       
-    }
-
-
-
-
-    public class User:IdentityUser<string>, IEntity<string>
+    public class User:IdentityUser, IEntity<string>
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
         public Wallet Wallet { get; set; }
     }
-
-
-
-
-
-
 
 }

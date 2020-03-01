@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 
-namespace E_Wallet.Core.Models.Domain
+namespace EWallet.Core.Models.Domain
 {
     public class Account : IEntity<string>
     {
@@ -18,8 +18,6 @@ namespace E_Wallet.Core.Models.Domain
 
         public string WalletId { get; set; }
         public Wallet Wallet { get; set; }
-
-        public short CurrencyId { get; set; }
         public Currency Currency { get; set; }
 
         public ICollection<Operation> Operations { get; set; }

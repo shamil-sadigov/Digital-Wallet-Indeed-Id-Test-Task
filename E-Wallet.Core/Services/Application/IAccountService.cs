@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace E_Wallet.Core.Services
+namespace EWallet.Core.Services.Application
 {
     public interface IAccountService
     {

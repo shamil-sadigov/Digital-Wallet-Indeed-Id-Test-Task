@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace E_Wallet.Core.Models.Domain
+namespace EWallet.Core.Models.Domain
 {
     public partial class Currency : IEquatable<string>, IEquatable<ushort>
     {

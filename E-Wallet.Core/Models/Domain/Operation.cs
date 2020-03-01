@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace E_Wallet.Core.Models.Domain
+namespace EWallet.Core.Models.Domain
 {
     public class Operation : IEntity<string>
     {

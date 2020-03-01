@@ -4,14 +4,14 @@
     "E:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Infrastructure\\E-Wallet.Persitence.csproj": {}
   },
   "projects": {
-    "E:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Infrastructure\\E-Wallet.Persitence.csproj": {
+    "E:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Core\\E-Wallet.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Infrastructure\\E-Wallet.Persitence.csproj",
-        "projectName": "E-Wallet.Persitence",
-        "projectPath": "E:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Infrastructure\\E-Wallet.Persitence.csproj",
+        "projectUniqueName": "E:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Core\\E-Wallet.Core.csproj",
+        "projectName": "E-Wallet.Core",
+        "projectPath": "E:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Core\\E-Wallet.Core.csproj",
         "packagesPath": "C:\\Users\\sovsh\\.nuget\\packages\\",
-        "outputPath": "E:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Infrastructure\\obj\\",
+        "outputPath": "E:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -42,6 +42,89 @@
         "netcoreapp3.1": {
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.2, )"
+            },
+            "Microsoft.Extensions.Identity.Stores": {
+              "target": "Package",
+              "version": "[3.1.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Infrastructure\\E-Wallet.Persitence.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Infrastructure\\E-Wallet.Persitence.csproj",
+        "projectName": "E-Wallet.Persitence",
+        "projectPath": "E:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Infrastructure\\E-Wallet.Persitence.csproj",
+        "packagesPath": "C:\\Users\\sovsh\\.nuget\\packages\\",
+        "outputPath": "E:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\sovsh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "E:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Core\\E-Wallet.Core.csproj": {
+                "projectPath": "E:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Core\\E-Wallet.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.2, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[3.1.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[3.1.2, )"
             }

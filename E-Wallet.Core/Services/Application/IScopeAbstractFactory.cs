@@ -1,4 +1,6 @@
-﻿namespace E_Wallet.Core.Models.Domain
+﻿using EWallet.Core.Models.Domain;
+
+namespace EWallet.Core.Services.Application
 {
     public interface IScopeAbstractFactory
     {
