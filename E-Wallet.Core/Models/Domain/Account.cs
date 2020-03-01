@@ -1,9 +1,17 @@
-﻿namespace E_Wallet.Core.Models.Domain
+﻿using System.Collections;
+using System.Collections.Generic;
+
+namespace E_Wallet.Core.Models.Domain
 {
-    public class Account
+    public class Account : IEntity<string>
     {
         public string Id { get; set; }
         public decimal Balance { get; set; }
+
+        public Account()
+        {
+            Operations = new HashSet<Operation>();
+        }
 
 
         #region Navigation Properties
@@ -14,13 +22,8 @@
         public short CurrencyId { get; set; }
         public Currency Currency { get; set; }
 
+        public ICollection<Operation> Operations { get; set; }
+
         #endregion
     }
-
-
-
-
-
-
-
 }

@@ -1,4 +1,6 @@
-﻿namespace E_Wallet.Core.Models.Domain
+﻿using E_Wallet.Core.Models.Domain;
+
+namespace E_Wallet.Aplication.Services
 {
     public class ScopeAbstractFactory: IScopeAbstractFactory
     {
@@ -25,17 +27,5 @@
         public (Scope Scope, ScopeClaim Claim) ForFullScope()
          => (Scope: new Scope(ScopeConstants.FullScope),
              Claim: new ScopeClaim(permission: ScopeConstants.FullScope, allowed: true));
-    }
-
-
-    public interface IScopeAbstractFactory
-    {
-        public (Scope Scope, ScopeClaim Claim) ForAccountCreate();
-        public (Scope Scope, ScopeClaim Claim) ForAccountReplenish();
-        public (Scope Scope, ScopeClaim Claim) ForAccountWithdraw();
-        public (Scope Scope, ScopeClaim Claim) ForAccountTransfer();
-        public (Scope Scope, ScopeClaim Claim) ForWalletState();
-        public (Scope Scope, ScopeClaim Claim) ForFullScope()
-
     }
 }   

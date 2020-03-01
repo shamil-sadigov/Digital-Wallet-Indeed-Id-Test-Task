@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace E_Wallet.Core.Models.Domain
 {
-    public class Operation
+    public class Operation : IEntity<string>
     {
         public string Id { get; set; }
         public OpeartionDirection Direction { get; set; }

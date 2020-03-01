@@ -11,11 +11,12 @@ namespace E_Wallet.Core.Models.Domain
         public string Permission { get; set; }
         public bool Allowed { get; set; }
 
-
         public byte ScopeId { get; set; }
         public Scope Scope { get; set; }
 
-
+        /// <summary>
+        /// Ctor for EF Core
+        /// </summary>
         public ScopeClaim()
         {
 
@@ -23,7 +24,7 @@ namespace E_Wallet.Core.Models.Domain
 
         public ScopeClaim(string permission, bool allowed)
         {
-            ScopeType = scopeType;
+            Permission = permission;
             Allowed = allowed;
         }
 
