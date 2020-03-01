@@ -5,8 +5,7 @@ namespace EWallet.Core.Services.Persistence
 {
     public interface IRepository<T> where T : class
     {
-        DbSet<T> Set { get; set; }
+        DbSet<T> Set();
         Task SaveChangesAsync();
     }
-
 }
