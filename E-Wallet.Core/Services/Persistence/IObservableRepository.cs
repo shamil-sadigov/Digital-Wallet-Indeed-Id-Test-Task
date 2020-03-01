@@ -5,6 +5,6 @@ namespace EWallet.Core.Services.Persistence
 {
     public interface IObservableRepository<T> where T : class
     {
-        event Func<IRepository<T>, Task> OnRepositoryUpdateAsync;
+        event Func<IRepositoryBase<T>, Task> OnRepositoryUpdateAsync;
     }
 }

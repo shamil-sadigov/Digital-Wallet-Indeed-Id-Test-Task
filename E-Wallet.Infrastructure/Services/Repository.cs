@@ -7,17 +7,17 @@ using System.Threading.Tasks;
 
 namespace EWallet.Persistence.Services
 {
-    public class RepositoryBase<T> : IRepositoryBase<T> where T :class
+    public class Repository<T> : IRepository<T> where T : class
     {
         private readonly ApplicationContext context;
 
-        public RepositoryBase(ApplicationContext ctx)
-            =>context = ctx;
-        
+        public Repository(ApplicationContext ctx)
+            => context = ctx;
+
         public DbSet<T> Set()
             => context.Set<T>();
-        
-        public event Func<IRepository<T>, Task> OnRepositoryUpdateAsync;
+
+        public event Func<IRepositoryBase<T>, Task> OnRepositoryUpdateAsync;
 
         public async Task SaveChangesAsync()
         {

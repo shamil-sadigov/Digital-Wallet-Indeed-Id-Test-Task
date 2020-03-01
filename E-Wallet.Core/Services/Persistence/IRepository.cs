@@ -1,11 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.Threading.Tasks;
-
-namespace EWallet.Core.Services.Persistence
+﻿namespace EWallet.Core.Services.Persistence
 {
-    public interface IRepository<T> where T : class
+    public interface IRepository<T> : IRepositoryBase<T>, IObservableRepository<T>
+        where T : class
     {
-        DbSet<T> Set();
-        Task SaveChangesAsync();
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using EWallet.Core.Models.Domain;
+using EWallet.Core.Services.Persistence;
 using EWallet.Persistence.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -21,6 +22,8 @@ namespace EWallet.Persistence
 
             services.AddDbContext<ApplicationContext>(ops =>
                 ops.UseSqlite("Data Source=application-database.db"));
+
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
         }
     }
 }
