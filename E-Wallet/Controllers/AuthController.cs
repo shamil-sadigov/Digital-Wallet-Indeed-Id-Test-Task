@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace EWallet.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     public class AuthController : Controller
     {
         private readonly IMediator mediator;
@@ -23,7 +23,7 @@ namespace EWallet.Controllers
         }
 
 
-        [HttpPost("register")]
+        [HttpPost]
         [TypeFilter(typeof(ValidateUserRegistration))]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(BadRequestResponse))]
@@ -36,21 +36,5 @@ namespace EWallet.Controllers
 
             return BadRequest(new BadRequestResponse(result.errorMessage));
         }
-
-
-        [HttpPost("token")]
-        [TypeFilter(typeof(ValidateUserAuthTokenRequest))]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(BadRequestResponse))]
-        public async Task<IActionResult> GetAuthToken([FromBody] UserAuthTokenRequest request)
-        {
-            string token = await mediator.Send(request);
-            return Ok(token);
-        }
-
-
-
-
-
-    }
+    }2
 }

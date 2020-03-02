@@ -32,8 +32,8 @@ namespace EWallet.Helper
 
         public static void AddApplicationFilters(this IServiceCollection services)
         {
-            services.AddScoped<ValidateUserRegistration>();
-            services.AddScoped<ValidateUserAuthTokenRequest>();
+            services.AddPermissiond<ValidateUserRegistration>();
+            services.AddPermissiond<ValidateUserAuthTokenRequest>();
         }
 
     }

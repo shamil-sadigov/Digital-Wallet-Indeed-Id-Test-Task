@@ -4,17 +4,17 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace EWallet.Persistence.Configurations
 {
-    public class ScopeConfiguration : IEntityTypeConfiguration<Scope>
+    public class PermissionConfiguration : IEntityTypeConfiguration<Permission>
     {
-        public void Configure(EntityTypeBuilder<Scope> scope)
+        public void Configure(EntityTypeBuilder<Permission> Permission)
         {
-            scope.HasKey(x => x.Id);
+            Permission.HasKey(x => x.Id);
 
-            scope.Property(x => x.Id).ValueGeneratedOnAdd();
+            Permission.Property(x => x.Id).ValueGeneratedOnAdd();
 
-            scope.ToTable("Scopes");
+            Permission.ToTable("Permissions");
 
-            scope.Property(x => x.Name)
+            Permission.Property(x => x.Name)
                 .HasMaxLength(20)
                 .IsRequired();
         }

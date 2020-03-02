@@ -29,7 +29,7 @@ namespace EWallet.Application
                   ops.TokenValidationParameters = (TokenValidationParameters)jwtOptions;
             });
 
-            services.AddScoped<IUserService, UserService>();
+            services.AddPermissiond<IUserService, UserService>();
         }
     }
 }

@@ -4,24 +4,24 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace EWallet.Persistence.Configurations
 {
-    public class ScopeClaimConfiguration : IEntityTypeConfiguration<ScopeClaim>
+    public class PermissionClaimConfiguration : IEntityTypeConfiguration<PermissionClaim>
     {
-        public void Configure(EntityTypeBuilder<ScopeClaim> scopeClaim)
+        public void Configure(EntityTypeBuilder<PermissionClaim> PermissionClaim)
         {
-            scopeClaim.HasKey(x => x.Id);
+            PermissionClaim.HasKey(x => x.Id);
 
-            scopeClaim.Property(x => x.Id).ValueGeneratedOnAdd();
+            PermissionClaim.Property(x => x.Id).ValueGeneratedOnAdd();
 
-            scopeClaim.ToTable("ScopeClaims");
+            PermissionClaim.ToTable("PermissionClaims");
 
-            scopeClaim.Property(x => x.Permission)
+            PermissionClaim.Property(x => x.Name)
                       .HasMaxLength(20)
                       .IsRequired();
 
 
-            scopeClaim.HasOne(x => x.Scope)
+            PermissionClaim.HasOne(x => x.Permission)
                       .WithMany(s => s.Claims)
-                      .HasForeignKey(x => x.ScopeId)
+                      .HasForeignKey(x => x.PermissionId)
                       .OnDelete(DeleteBehavior.Restrict);
 
         }

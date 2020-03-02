@@ -3,7 +3,7 @@
     public interface ITokenFactory
     {
         IAuthenticationTokenGenerator UserAuthentication { get; set; }
-        IScopedTokenGenerator ScopedToken { get; set; }
+        IPermissionTokenGenerator PermissiondToken { get; set; }
     }
 
 }

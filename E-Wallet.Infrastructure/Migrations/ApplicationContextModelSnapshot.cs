@@ -81,7 +81,7 @@ namespace EWallet.Persistence.Migrations
                     b.ToTable("Operations");
                 });
 
-            modelBuilder.Entity("EWallet.Core.Models.Domain.Scope", b =>
+            modelBuilder.Entity("EWallet.Core.Models.Domain.Permission", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
@@ -94,10 +94,10 @@ namespace EWallet.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Scopes");
+                    b.ToTable("Permissions");
                 });
 
-            modelBuilder.Entity("EWallet.Core.Models.Domain.ScopeClaim", b =>
+            modelBuilder.Entity("EWallet.Core.Models.Domain.PermissionClaim", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
@@ -111,14 +111,14 @@ namespace EWallet.Persistence.Migrations
                         .HasColumnType("TEXT")
                         .HasMaxLength(20);
 
-                    b.Property<string>("ScopeId")
+                    b.Property<string>("PermissionId")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ScopeId");
+                    b.HasIndex("PermissionId");
 
-                    b.ToTable("ScopeClaims");
+                    b.ToTable("PermissionClaims");
                 });
 
             modelBuilder.Entity("EWallet.Core.Models.Domain.User", b =>
@@ -232,11 +232,11 @@ namespace EWallet.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("EWallet.Core.Models.Domain.ScopeClaim", b =>
+            modelBuilder.Entity("EWallet.Core.Models.Domain.PermissionClaim", b =>
                 {
-                    b.HasOne("EWallet.Core.Models.Domain.Scope", "Scope")
+                    b.HasOne("EWallet.Core.Models.Domain.Permission", "Permission")
                         .WithMany("Claims")
-                        .HasForeignKey("ScopeId")
+                        .HasForeignKey("PermissionId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 

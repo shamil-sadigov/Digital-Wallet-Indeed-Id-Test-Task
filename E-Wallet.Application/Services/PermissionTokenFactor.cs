@@ -3,9 +3,9 @@ using System;
 
 namespace EWallet.Application.Services
 {
-    public class ScopedTokenFactory : IScopedTokenGenerator
+    public class PermissionTokenFactor : IPermissionTokenGenerator
     {
-        public string GenerateToken(string[] entity)
+        public string GenerateToken(string[] persmi)
         {
             throw new NotImplementedException();
         }

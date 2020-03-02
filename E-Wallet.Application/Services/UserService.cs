@@ -27,7 +27,7 @@ namespace EWallet.Application.Services
             return await userManager.FindByEmailAsync(email);
         }
 
-        public Task GetUserAccountScopedToken()
+        public Task GetUserAccountPermissiondToken()
         {
             throw new NotImplementedException();
         }

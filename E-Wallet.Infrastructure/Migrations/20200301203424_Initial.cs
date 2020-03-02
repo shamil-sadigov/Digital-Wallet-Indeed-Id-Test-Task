@@ -20,7 +20,7 @@ namespace EWallet.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Scopes",
+                name: "Permissions",
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
@@ -28,7 +28,7 @@ namespace EWallet.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Scopes", x => x.Id);
+                    table.PrimaryKey("PK_Permissions", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -59,21 +59,21 @@ namespace EWallet.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ScopeClaims",
+                name: "PermissionClaims",
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
                     Permission = table.Column<string>(maxLength: 20, nullable: false),
                     Allowed = table.Column<bool>(nullable: false),
-                    ScopeId = table.Column<string>(nullable: true)
+                    PermissionId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ScopeClaims", x => x.Id);
+                    table.PrimaryKey("PK_PermissionClaims", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ScopeClaims_Scopes_ScopeId",
-                        column: x => x.ScopeId,
-                        principalTable: "Scopes",
+                        name: "FK_PermissionClaims_Permissions_PermissionId",
+                        column: x => x.PermissionId,
+                        principalTable: "Permissions",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -159,9 +159,9 @@ namespace EWallet.Persistence.Migrations
                 column: "AccountId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ScopeClaims_ScopeId",
-                table: "ScopeClaims",
-                column: "ScopeId");
+                name: "IX_PermissionClaims_PermissionId",
+                table: "PermissionClaims",
+                column: "PermissionId");
 
             migrationBuilder.CreateIndex(
                 name: "EmailIndex",
@@ -187,13 +187,13 @@ namespace EWallet.Persistence.Migrations
                 name: "Operations");
 
             migrationBuilder.DropTable(
-                name: "ScopeClaims");
+                name: "PermissionClaims");
 
             migrationBuilder.DropTable(
                 name: "Accounts");
 
             migrationBuilder.DropTable(
-                name: "Scopes");
+                name: "Permissions");
 
             migrationBuilder.DropTable(
                 name: "Currencies");
