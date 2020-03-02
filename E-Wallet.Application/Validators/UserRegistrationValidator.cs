@@ -21,7 +21,7 @@ namespace EWallet.Application.Validators
 
             RuleFor(model => model.Email).EmailAddress();
 
-            RuleSet("EmailIsNotRegistered", () =>
+            RuleSet("EmailIsRegistered", () =>
             {
                 RuleFor(model => model.Email)
                 .MustAsync(async (email, token) =>

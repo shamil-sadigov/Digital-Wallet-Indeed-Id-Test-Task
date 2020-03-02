@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EWallet.Filters
 {
-    public class ValidateUserRegistration : ValidationAttributeBase
+    public sealed class ValidateUserRegistration : ValidationAttributeBase
     {
         private readonly IValidator<UserRegistrationRequest> userValidator;
 
@@ -18,7 +18,7 @@ namespace EWallet.Filters
         {
             var registrationRequest =
                 context.ActionArguments.FirstOrDefault(x => x.Value is UserRegistrationRequest)
-                .Value as UserRegistrationRequest ?? throw new ArgumentException("No UserRegistrationRequest has been detected in this action");
+                .Value as UserRegistrationRequest ?? throw new ArgumentException($"No {nameof(UserRegistrationRequest)} has been detected in this action");
 
             var result = userValidator.Validate(registrationRequest);
 
