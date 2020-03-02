@@ -2,14 +2,14 @@
 using EWallet.Core.Services.Application;
 using System;
 
-namespace EWallet.Application.Services
+namespace EWallet.Application.Builders
 {
     public class AccountBuilder : IAccountBuilder
     {
         private readonly Account account;
-        public AccountBuilder(Account account)
-            => this.account = account;
-        
+        public AccountBuilder()
+            => account = new Account();
+
 
         public IAccountBuilder WithCurrency(Currency currency)
         {

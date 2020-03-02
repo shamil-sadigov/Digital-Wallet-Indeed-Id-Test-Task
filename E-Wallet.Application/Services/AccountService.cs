@@ -1,4 +1,5 @@
-﻿using EWallet.Core.Models.Domain;
+﻿using EWallet.Application.Builders;
+using EWallet.Core.Models.Domain;
 using EWallet.Core.Services.Application;
 using EWallet.Core.Services.Persistence;
 using Microsoft.EntityFrameworkCore;
@@ -20,8 +21,9 @@ namespace EWallet.Application.Services
 
         public async Task<(Account account, string errorMessage)> CreateAccount(Action<IAccountBuilder> builderOptions)
         {
-            var newAccount = new Account();
-            builderOptions(new AccountBuilder(newAccount));
+            var builder = new AccountBuilder();
+            builderOptions(builder);
+            Account newAccount = builder.Build();
 
             if (!await Repository.Set().AnyAsync(AccountExist(newAccount)))
             {
@@ -55,7 +57,6 @@ namespace EWallet.Application.Services
                 account.Balance -= amount;
                 Repository.Set().Update(account);
                 await Repository.SaveChangesAsync();
-
                 return (true, errorMessage: string.Empty);
             }
 

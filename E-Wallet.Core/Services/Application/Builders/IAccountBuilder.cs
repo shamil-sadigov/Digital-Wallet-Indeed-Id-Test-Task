@@ -2,7 +2,7 @@
 
 namespace EWallet.Core.Services.Application
 {
-    public interface IAccountBuilder:IBuilder<Account>
+    public interface IAccountBuilder : IBuilder<Account>
     {
         IAccountBuilder WithCurrency(Currency currency);
         IAccountBuilder WithBalance(decimal balance);
