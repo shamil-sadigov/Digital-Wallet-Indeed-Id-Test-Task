@@ -4,9 +4,7 @@ using EWallet.Core.Services.Application;
 using EWallet.Core.Services.Persistence;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace EWallet.Application.Services
@@ -19,7 +17,7 @@ namespace EWallet.Application.Services
             => Repository = repository;
 
 
-        public async Task<(Account account, string errorMessage)> CreateAccount(Action<IAccountBuilder> builderOptions)
+        public async Task<(Account account, string errorMessage)> CreateAccountAsync(Action<IAccountBuilder> builderOptions)
         {
             var builder = new AccountBuilder();
             builderOptions(builder);
@@ -32,22 +30,12 @@ namespace EWallet.Application.Services
                 return (newAccount, errorMessage: string.Empty);
             }
 
-            return (account: null, "Account already exists!");
+            return (null, "Account already exists!");
         }
 
 
-        public async Task IncreaseBalance(Account account, decimal amount)
-        {
-            if (amount < 0)
-                throw new ArgumentOutOfRangeException("Amount parameter is less thatn zero");
 
-            account.Balance += amount;
-            Repository.Set().Update(account);
-            await Repository.SaveChangesAsync();
-        }
-
-
-        public async Task<(bool succeeded, string errorMessage)> DecreaseBalance(Account account, decimal amount)
+        public async Task<(bool succeeded, string errorMessage)> DecreaseBalanceAsync(Account account, decimal amount)
         {
             if (amount < 0)
                 throw new ArgumentOutOfRangeException("Amount parameter is less than zero");
@@ -66,5 +54,17 @@ namespace EWallet.Application.Services
         private Expression<Func<Account, bool>> AccountExist(Account account)
             => x => x.WalletId == account.WalletId
                  && x.Currency == account.Currency;
+
+        public async Task<(bool succeeded, string errorMessage)> IncreaseBalanceAsync(Account account, decimal amount)
+        {
+            if (amount < 0)
+                throw new ArgumentOutOfRangeException("Amount parameter is less thatn zero");
+
+            account.Balance += amount;
+            Repository.Set().Update(account);
+            await Repository.SaveChangesAsync();
+
+            return (true, string.Empty);
+        }
     }
 }

@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E-Wallet.Core", "E-Wallet.C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E-Wallet.Persitence", "E-Wallet.Infrastructure\E-Wallet.Persitence.csproj", "{EF8B9306-A047-43BF-8CCA-7FA322897892}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E-Wallet.Application", "E-Wallet.Application\E-Wallet.Application.csproj", "{7501F812-FF29-48F5-8E50-224087B73897}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E-Wallet.Application", "E-Wallet.Application\E-Wallet.Application.csproj", "{7501F812-FF29-48F5-8E50-224087B73897}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

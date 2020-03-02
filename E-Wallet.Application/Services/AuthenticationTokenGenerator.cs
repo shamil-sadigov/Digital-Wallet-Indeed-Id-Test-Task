@@ -9,11 +9,11 @@ using System.Security.Claims;
 
 namespace EWallet.Application.Services
 {
-    public class AuthenticationTokenFactory : IAuthenticationTokenFactory
+    public class AuthenticationTokenGenerator : IAuthenticationTokenGenerator
     {
         private readonly JwtOptions jwtOptions;
 
-        public AuthenticationTokenFactory(IOptionsMonitor<JwtOptions> jwtOptions)
+        public AuthenticationTokenGenerator(IOptionsMonitor<JwtOptions> jwtOptions)
         {
             this.jwtOptions = jwtOptions.CurrentValue;
 

@@ -3,7 +3,7 @@ using System;
 
 namespace EWallet.Application.Services
 {
-    public class ScopedTokenFactory : IScopedTokenFactory
+    public class ScopedTokenFactory : IScopedTokenGenerator
     {
         public string GenerateToken(string[] entity)
         {

@@ -10,6 +10,19 @@ namespace EWallet.Core.Models.Domain
         public string LastName { get; set; }
 
         public Wallet Wallet { get; set; }
+
+
+        public User()
+        {
+
+        }
+
+        public User(string firstName, string lastName, string email)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+        }
     }
 
 }

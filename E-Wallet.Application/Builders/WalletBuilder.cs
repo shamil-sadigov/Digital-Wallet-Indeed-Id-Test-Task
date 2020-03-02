@@ -10,8 +10,8 @@ namespace EWallet.Application.Builders
     {
         private readonly Wallet wallet;
 
-        public WalletBuilder(Wallet wallet)
-            => wallet = new Wallet();
+        public WalletBuilder()
+            => this.wallet = new Wallet();
         
 
         public IWalletBuilder ForUser(string userId)
