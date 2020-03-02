@@ -11,4 +11,15 @@ namespace EWallet.Core.Services.Application
         Task IncreaseBalance(Account account, decimal amount);
     }
 
+
+    public interface IWalletService
+    {
+        Task<Wallet> CreateWallet(Action<IWalletBuilder> builderOptions);
+    }
+
+
+    public interface ICurrentUserService
+    {
+        Task<User> CurrentUser { get; }
+    }
 }

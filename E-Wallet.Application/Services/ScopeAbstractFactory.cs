@@ -29,4 +29,4 @@ namespace EWallet.Aplication.Services
          => (Scope: new Scope(ScopeConstants.FullScope),
              Claim: new ScopeClaim(permission: ScopeConstants.FullScope, allowed: true));
     }
-}   
+}

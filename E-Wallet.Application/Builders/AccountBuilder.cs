@@ -13,7 +13,7 @@ namespace EWallet.Application.Builders
 
         public IAccountBuilder WithCurrency(Currency currency)
         {
-            if (currency == null)
+            if (currency is null)
                 throw new ArgumentNullException(nameof(currency));
 
             account.Currency = currency;
