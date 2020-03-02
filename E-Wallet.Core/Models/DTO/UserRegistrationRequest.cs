@@ -13,8 +13,6 @@ namespace EWallet.Core.Models.DTO
         public string Email { get; set; }
         public string Password { get; set; }
 
-
-
         public static implicit operator User(UserRegistrationRequest request)
             => new User(request.FirstName, request.LastName, request.Email);
     }

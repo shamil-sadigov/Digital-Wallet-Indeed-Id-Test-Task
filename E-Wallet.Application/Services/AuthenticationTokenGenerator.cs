@@ -29,7 +29,6 @@ namespace EWallet.Application.Services
             var tokenDesciptor = new SecurityTokenDescriptor()
             {
                 Subject = new ClaimsIdentity(claims),
-                Expires = DateTime.UtcNow.Add(jwtOptions.ExpirationTime),
                 Audience = jwtOptions.Audience,
                 Issuer = jwtOptions.Issuer,
                 SigningCredentials = new SigningCredentials(key: new SymmetricSecurityKey(jwtOptions.GetSecretBytes()),

@@ -36,5 +36,21 @@ namespace EWallet.Controllers
 
             return BadRequest(new BadRequestResponse(result.errorMessage));
         }
+
+
+        [HttpPost("token")]
+        [TypeFilter(typeof(ValidateUserAuthTokenRequest))]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(BadRequestResponse))]
+        public async Task<IActionResult> GetAuthToken([FromBody] UserAuthTokenRequest request)
+        {
+            string token = await mediator.Send(request);
+            return Ok(token);
+        }
+
+
+
+
+
     }
 }

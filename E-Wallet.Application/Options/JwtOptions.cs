@@ -9,7 +9,6 @@ namespace EWallet.Application.Options
         public string Issuer { get; set; }
         public string Audience { get; set; }
         public string SecretKey { get; set; }
-        public TimeSpan ExpirationTime { get; set; }
 
         public static explicit operator TokenValidationParameters(JwtOptions ops)
         {
@@ -21,7 +20,7 @@ namespace EWallet.Application.Options
                 ValidAudience = ops.Audience,
                 ValidateIssuer = true,
                 ValidateAudience = true,
-                RequireExpirationTime = true,
+                RequireExpirationTime = false,
                 ValidateLifetime = false,
                 ClockSkew = TimeSpan.Zero
             };

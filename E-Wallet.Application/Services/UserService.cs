@@ -18,16 +18,21 @@ namespace EWallet.Application.Services
         {
             this.userManager = userManager;
         }
+
+        public async Task<User> FindByEmail(string email)
+        {
+            if (string.IsNullOrEmpty(email))
+                throw new ArgumentNullException(nameof(email));
+
+            return await userManager.FindByEmailAsync(email);
+        }
+
         public Task GetUserAccountScopedToken()
         {
             throw new NotImplementedException();
         }
 
-        public Task GetUserToken(UserAuthTokenRequest request)
-        {
-            throw new NotImplementedException();
-        }
-
+     
         public async Task<(User user, string errorMessage)> RegisterUserAsync(UserRegistrationRequest request)
         {
             User newUser = request; // implicit operator 
