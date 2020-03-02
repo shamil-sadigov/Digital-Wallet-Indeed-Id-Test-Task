@@ -1,35 +1,44 @@
 ﻿using EWallet.Core.Models.Domain;
 using EWallet.Core.Services.Application;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace EWallet.Application.Services
 {
-    public class AccountBuilderOptions : IAccountBuilderOptions
+    public class AccountBuilder : IAccountBuilder
     {
         private readonly Account account;
-
-        public AccountBuilderOptions(Account account)
+        public AccountBuilder(Account account)
             => this.account = account;
         
 
-        public IAccountBuilderOptions WithCurrency(Currency currency)
+        public IAccountBuilder WithCurrency(Currency currency)
         {
+            if (currency == null)
+                throw new ArgumentNullException(nameof(currency));
+
             account.Currency = currency;
             return this;
         }
 
-        public IAccountBuilderOptions WithBalance(decimal balance)
+        public IAccountBuilder WithBalance(decimal balance)
         {
+            if (balance < 0)
+                throw new ArgumentOutOfRangeException(nameof(balance));
+
             account.Balance = balance;
             return this;
         }
 
-        public IAccountBuilderOptions OnWallet(string walletId)
+        public IAccountBuilder OnWallet(string walletId)
         {
+            if (string.IsNullOrEmpty(walletId))
+                throw new ArgumentException(nameof(walletId));
+
             account.WalletId = walletId;
             return this;
         }
+
+        public Account Build()
+            => account;
     }
 }

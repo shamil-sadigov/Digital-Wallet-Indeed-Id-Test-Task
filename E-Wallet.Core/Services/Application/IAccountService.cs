@@ -6,7 +6,7 @@ namespace EWallet.Core.Services.Application
 {
     public interface IAccountService
     {
-        Task<(Account account, string errorMessage)> CreateAccount(Action<IAccountBuilderOptions> builderOptions);
+        Task<(Account account, string errorMessage)> CreateAccount(Action<IAccountBuilder> builderOptions);
         Task<(bool succeeded, string errorMessage)> DecreaseBalance(Account account, decimal amount);
         Task IncreaseBalance(Account account, decimal amount);
     }

@@ -12,32 +12,26 @@ namespace EWallet.Application.Services
 {
     public class AccountService : IAccountService
     {
-        private readonly IRepository<Account> repository;
+        public IRepository<Account> Repository { get; set; }
 
         public AccountService(IRepository<Account> repository)
-        {
-            this.repository = repository;
-        }
+            => Repository = repository;
 
 
-        public async Task<(Account account, string errorMessage)> CreateAccount(Action<IAccountBuilderOptions> builderOptions)
+        public async Task<(Account account, string errorMessage)> CreateAccount(Action<IAccountBuilder> builderOptions)
         {
             var newAccount = new Account();
-            builderOptions(new AccountBuilderOptions(newAccount));
+            builderOptions(new AccountBuilder(newAccount));
 
-            if (string.IsNullOrEmpty(newAccount.WalletId))
-                throw new Exception("WalletId is not set during IAccounBuilderOptions initiazliation");
-
-            if (!await repository.Set().AnyAsync(AccountExist(newAccount)))
+            if (!await Repository.Set().AnyAsync(AccountExist(newAccount)))
             {
-                await repository.Set().AddAsync(newAccount);
-                await repository.SaveChangesAsync();
+                await Repository.Set().AddAsync(newAccount);
+                await Repository.SaveChangesAsync();
                 return (newAccount, errorMessage: string.Empty);
             }
 
             return (account: null, "Account already exists!");
         }
-
 
 
         public async Task IncreaseBalance(Account account, decimal amount)
@@ -46,8 +40,8 @@ namespace EWallet.Application.Services
                 throw new ArgumentOutOfRangeException("Amount parameter is less thatn zero");
 
             account.Balance += amount;
-            repository.Set().Update(account);
-            await repository.SaveChangesAsync();
+            Repository.Set().Update(account);
+            await Repository.SaveChangesAsync();
         }
 
 
@@ -59,8 +53,8 @@ namespace EWallet.Application.Services
             if (account.Balance >= amount)
             {
                 account.Balance -= amount;
-                repository.Set().Update(account);
-                await repository.SaveChangesAsync();
+                Repository.Set().Update(account);
+                await Repository.SaveChangesAsync();
 
                 return (true, errorMessage: string.Empty);
             }
@@ -68,12 +62,8 @@ namespace EWallet.Application.Services
             return (false, errorMessage: "Insufficient funds");
         }
 
-
-
-
         private Expression<Func<Account, bool>> AccountExist(Account account)
             => x => x.WalletId == account.WalletId
                  && x.Currency == account.Currency;
-
     }
 }
