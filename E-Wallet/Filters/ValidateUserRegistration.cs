@@ -36,9 +36,7 @@ namespace EWallet.Filters
                 return;
             }
 
-
             await next();
-
         }
     }
 }

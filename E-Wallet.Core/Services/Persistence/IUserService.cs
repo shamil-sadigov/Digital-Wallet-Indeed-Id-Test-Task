@@ -7,7 +7,7 @@ namespace EWallet.Core.Services.Persistence
     public interface IUserService
     {
         Task<(User user, string errorMessage)> RegisterUserAsync(UserRegistrationRequest request);
-        Task GetUserToken(UserTokenRequest request);
+        Task GetUserToken(UserAuthTokenRequest request);
         Task GetUserAccountScopedToken();
     }
 

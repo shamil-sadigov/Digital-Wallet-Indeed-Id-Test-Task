@@ -23,7 +23,7 @@ namespace EWallet.Application.Services
             throw new NotImplementedException();
         }
 
-        public Task GetUserToken(UserTokenRequest request)
+        public Task GetUserToken(UserAuthTokenRequest request)
         {
             throw new NotImplementedException();
         }
