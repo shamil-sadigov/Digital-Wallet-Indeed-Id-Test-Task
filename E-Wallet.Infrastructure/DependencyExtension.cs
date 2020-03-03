@@ -23,7 +23,8 @@ namespace EWallet.Persistence
             services.AddDbContext<ApplicationContext>(ops =>
                 ops.UseSqlite("Data Source=application-database.db"));
 
-            services.AddPermissiond(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped(typeof(IObservableRepository<>), typeof(Repository<>));
         }
     }
 }

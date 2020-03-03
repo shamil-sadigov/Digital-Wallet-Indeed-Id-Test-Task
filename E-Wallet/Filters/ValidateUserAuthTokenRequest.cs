@@ -16,9 +16,7 @@ namespace EWallet.Filters
 
         public override async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
-            var request =
-                context.ActionArguments.FirstOrDefault(x => x.Value is UserAuthTokenRequest)
-                .Value as UserAuthTokenRequest ?? throw new ArgumentException($"No {nameof(UserAuthTokenRequest)}has been detected in this action");
+            var request = RetrieveArgument<UserAuthTokenRequest>(context);
 
             var result = userValidator.Validate(request);
 

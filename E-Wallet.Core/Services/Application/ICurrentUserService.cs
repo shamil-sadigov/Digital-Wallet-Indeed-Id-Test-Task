@@ -5,6 +5,6 @@ namespace EWallet.Core.Services.Application
 {
     public interface ICurrentUserService
     {
-        Task<User> CurrentUser { get; }
+        Task<User> GetCurrentUserAsync();
     }
 }

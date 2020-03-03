@@ -1,9 +1,7 @@
-﻿using EWallet.Core.Models.Domain;
-using EWallet.Core.Models.DTO;
-using EWallet.Core.Services.Application;
-using EWallet.Core.Services.Persistence;
+﻿using EWallet.Core.Models.DTO;
 using EWallet.Filters;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -34,16 +32,15 @@ namespace EWallet.Controllers
         }
 
 
-
+        [Authorize]
         [HttpPost]
-        //[TypeFilter(typeof(ValidateUserAuthTokenRequest))]
+        [TypeFilter(typeof(ValidatePermissionTokenRequest))]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(BadRequestResponse))]
-        public async Task<IActionResult> GetPermissionToken([FromBody] UserAuthTokenRequest request)
+        public async Task<IActionResult> GetPermissionToken([FromBody] PermissionTokenRequest request)
         {
             string token = await mediator.Send(request);
             return Ok(token);
         }
-
     }
 }

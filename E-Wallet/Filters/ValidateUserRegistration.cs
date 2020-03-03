@@ -16,9 +16,7 @@ namespace EWallet.Filters
         
         public override async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
-            var registrationRequest =
-                context.ActionArguments.FirstOrDefault(x => x.Value is UserRegistrationRequest)
-                .Value as UserRegistrationRequest ?? throw new ArgumentException($"No {nameof(UserRegistrationRequest)} has been detected in this action");
+            var registrationRequest = RetrieveArgument<UserRegistrationRequest>(context);
 
             var result = userValidator.Validate(registrationRequest);
 

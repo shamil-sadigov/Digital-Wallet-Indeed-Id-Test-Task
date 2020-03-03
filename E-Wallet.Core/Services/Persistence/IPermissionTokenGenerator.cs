@@ -1,6 +1,8 @@
-﻿namespace EWallet.Core.Services.Persistence
+﻿using System.Collections.Generic;
+
+namespace EWallet.Core.Services.Persistence
 {
-    public interface IPermissionTokenGenerator : ITokenGenerator<string[]>
+    public interface IPermissionTokenGenerator : IAsyncTokenGenerator<IEnumerable<string>>
     {
 
     }

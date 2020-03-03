@@ -21,6 +21,5 @@ namespace EWallet.Application.Services
             new Claim(ApplicationClaims.UserId, user.Id),
             new Claim(ApplicationClaims.WalletId, user.Wallet.Id)
         };
-
     }
 }

@@ -12,6 +12,8 @@ namespace EWallet.Application
     {
         public static void AddApplicationServices(this IServiceCollection services, IConfiguration configuration)
         {
+            services.AddMemoryCache();
+
             services.Configure<JwtOptions>(ops =>
             configuration.GetSection(nameof(JwtOptions)).Bind(ops));
 
@@ -29,7 +31,8 @@ namespace EWallet.Application
                   ops.TokenValidationParameters = (TokenValidationParameters)jwtOptions;
             });
 
-            services.AddPermissiond<IUserService, UserService>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddHttpContextAccessor();
         }
     }
 }
