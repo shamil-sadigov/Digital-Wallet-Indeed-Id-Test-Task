@@ -27,7 +27,11 @@ namespace EWallet.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(BadRequestResponse))]
         public async Task<IActionResult> GetUserAuthenticationToken([FromBody] UserAuthTokenRequest request)
         {
-            string token = await mediator.Send(request);
+            (string errorMessage, string token) = await mediator.Send(request);
+
+            if (token is null)
+                return BadRequest(new BadRequestResponse(errorMessage));
+
             return Ok(token);
         }
 

@@ -2,8 +2,8 @@
 {
     public class AccountDTO
     {
-        public string Id { get; set; }
-        public string CurrencyIsoName { get; set; }
-        public decimal Balance { get; set; }
+        public string AccountId { get; set; }
+        public string Currency { get; set; }
+        public decimal CurrentBalance { get; set; }
     }
 }

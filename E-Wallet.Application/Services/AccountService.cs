@@ -11,13 +11,16 @@ namespace EWallet.Application.Services
 {
     public class AccountService : IAccountService
     {
+        private readonly IRepository<Operation> operationRepository;
         private readonly ICurrencyHelper currencyHelper;
         public IRepository<Account> Repository { get; set; }
 
         public AccountService(IRepository<Account> repository,
+                              IRepository<Operation> operationRepository,
                              ICurrencyHelper currencyHelper)
         {
             Repository = repository;
+            this.operationRepository = operationRepository;
             this.currencyHelper = currencyHelper;
         }
 
@@ -34,7 +37,7 @@ namespace EWallet.Application.Services
                 return (newAccount, errorMessage: string.Empty);
             }
 
-            return (null, "Account already exists!");
+            return (null, "Such account already exists!");
         }
 
 
@@ -49,6 +52,10 @@ namespace EWallet.Application.Services
                 account.Balance -= amount;
                 Repository.Set().Update(account);
                 await Repository.SaveChangesAsync();
+
+                operationRepository.Set().Add(new Operation(account.Id, amount, OperationDirection.Out));
+                await operationRepository.SaveChangesAsync();
+
                 return (true, errorMessage: string.Empty);
             }
 
@@ -57,7 +64,7 @@ namespace EWallet.Application.Services
 
         private Expression<Func<Account, bool>> AccountExist(Account account)
             => x => x.WalletId == account.WalletId
-                 && x.Currency == account.Currency;
+                 && x.CurrencyIsoNumberCode == account.CurrencyIsoNumberCode;
 
         public async Task<(bool succeeded, string errorMessage)> IncreaseBalanceAsync(Account account, decimal amount)
         {
@@ -67,6 +74,9 @@ namespace EWallet.Application.Services
             account.Balance += amount;
             Repository.Set().Update(account);
             await Repository.SaveChangesAsync();
+
+            operationRepository.Set().Add(new Operation(account.Id, amount, OperationDirection.In));
+            await operationRepository.SaveChangesAsync();
 
             return (true, string.Empty);
         }
@@ -85,13 +95,18 @@ namespace EWallet.Application.Services
                 {
                     try
                     {
-                        accountFrom.Balance -= transferAmount;
-                        accountTo.Balance += convertedAmount;
+                        await DecreaseBalanceAsync(accountFrom, transferAmount);
+                        await IncreaseBalanceAsync(accountTo, convertedAmount);
 
-                        Repository.Set().Update(accountFrom);
-                        Repository.Set().Update(accountTo);
 
-                        await Repository.SaveChangesAsync();
+
+                        //accountFrom.Balance -= transferAmount;
+                        //accountTo.Balance += convertedAmount;
+
+                        //Repository.Set().Update(accountFrom);
+                        //Repository.Set().Update(accountTo);
+
+                        //await Repository.SaveChangesAsync();
 
                         await transaction.CommitAsync();
                     }

@@ -7,7 +7,7 @@ using EWallet.Core.Models.Domain;
 
 namespace EWallet.Core.Request_Handlers.Users
 {
-    class UserAuthenticationTokenHandler : IRequestHandler<UserAuthTokenRequest, string>
+    class UserAuthenticationTokenHandler : IRequestHandler<UserAuthTokenRequest, (string errorMessage, string token)>
     {
         private readonly IUserService userService;
         private readonly ITokenFactory tokenFactory;
@@ -20,13 +20,16 @@ namespace EWallet.Core.Request_Handlers.Users
         }
 
 
-        public async Task<string> Handle(UserAuthTokenRequest request, CancellationToken cancellationToken)
+        public async Task<(string errorMessage, string token)> Handle(UserAuthTokenRequest request, CancellationToken cancellationToken)
         {
             User user = await userService.FindByEmail(request.Email);
 
+            if (!await userService.PasswordValid(user, request.Password))
+                return (errorMessage: "User password is not valid", token: null);
+
             string token = tokenFactory.UserAuthentication.GenerateToken(user);
 
-            return token;
+            return (errorMessage: null, token: token);
         }
     }
 }

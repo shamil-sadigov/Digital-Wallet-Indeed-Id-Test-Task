@@ -17,13 +17,20 @@ namespace EWallet.Filters
 
         public override async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
-            var request = RetrieveArgument<AccountOperationRequest>(context);
+            var request = RetrieveArgument<AccountTransferRequest>(context);
 
             var result = validator.Validate(request);
 
             if (!result.IsValid)
             {
                 ReturnBadRequest(context, error: string.Concat(result.Errors.Select(x => x.ErrorMessage)));
+                return;
+            }
+
+
+            if(request.FromAccountId.Equals(request.ToAccountId))
+            {
+                ReturnBadRequest(context, error: "It's not funny 😠");
                 return;
             }
 

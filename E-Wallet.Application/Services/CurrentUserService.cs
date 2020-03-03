@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -31,7 +32,6 @@ namespace EWallet.Application.Services
                 string userId = httpContext.User.GetId();
 
                 User foundUser = await userRepository.Set().Include(x => x.Wallet)
-                                                                .ThenInclude(w => w.Accounts)
                                                              .FirstOrDefaultAsync();
 
                 currentUserCached = foundUser;

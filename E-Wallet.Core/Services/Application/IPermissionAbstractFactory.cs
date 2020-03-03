@@ -2,6 +2,10 @@
 
 namespace EWallet.Core.Services.Application
 {
+    /// <summary>
+    /// Abstract factory that creates Permission with PermissionClaims inside
+    /// Basically used for Data seeding
+    /// </summary>
     public interface IPermissionAbstractFactory
     {
         public Permission ForAccountCreate();
@@ -10,6 +14,5 @@ namespace EWallet.Core.Services.Application
         public Permission ForAccountTransfer();
         public Permission ForWalletState();
         public Permission ForFullPermission();
-
     }
 }

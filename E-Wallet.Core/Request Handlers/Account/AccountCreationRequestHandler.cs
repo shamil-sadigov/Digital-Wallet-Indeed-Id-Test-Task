@@ -30,7 +30,7 @@ namespace EWallet.Core.Request_Handlers.AccountRequests
             (Models.Domain.Account account, string accountErrorMessage) = 
                 await accountService.CreateAccountAsync(ops => ops.OnWallet(currentUser.Wallet.Id)
                                                                   .WithBalance(0)
-                                                                  .WithCurrency(currency));
+                                                                  .WithCurrency(currency.IsoNumberCode));
             
             if(account is null)
                 return (false, accountErrorMessage);

@@ -20,7 +20,7 @@ namespace EWallet.Filters
 
         protected static T RetrieveArgument<T>(ActionExecutingContext context) where T :class
             => context.ActionArguments.FirstOrDefault(x => x.Value is T)
-                      .Value as T ?? throw new ArgumentException($"No {nameof(T)} has been detected in this action");
+                      .Value as T ?? throw new ArgumentException($"No {nameof(T)} has been detected. Request is not valid");
         
     }
 }

@@ -19,7 +19,7 @@ namespace EWallet.Application.Services
         => new Claim[]
         {
             new Claim(ApplicationClaims.UserId, user.Id),
-            new Claim(ApplicationClaims.WalletId, user.Wallet.Id)
+            new Claim(ApplicationClaims.Email, user.Email)
         };
     }
 }

@@ -2,28 +2,54 @@
 {
     public partial class Currency
     {
-        public static class Factory
+        public class Names
         {
-            public static Currency RUB
-                => new Currency(643, "RUB");
+            public class RUB
+            {
+                public const string ISOCodeAlfa = "RUB";
+                public const ushort ISOCodeNum = 643;
+            }
 
-            public static Currency USD
-                => new Currency(840, "USD");
+            public class USD
+            {
+                public const string ISOCodeAlfa = "USD";
+                public const ushort ISOCodeNum = 840;
+            }
 
-            public static Currency JPY
-                => new Currency(392, "JPY");
 
-            public static Currency THB
-                => new Currency(764, "THB");
+            public class JPY
+            {
+                public const string ISOCodeAlfa = "JPY";
+                public const ushort ISOCodeNum = 392;
+            }
 
-            public static Currency NZD
-                => new Currency(554, "NZD");
 
-            public static Currency MXN
-               => new Currency(484, "MXN");
+            public class THB
+            {
+                public const string ISOCodeAlfa = "THB";
+                public const ushort ISOCodeNum = 764;
+            }
 
-            public static Currency CZK
-              => new Currency(203, "CZK");
+
+            public class NZD
+            {
+                public const string ISOCodeAlfa = "NZD";
+                public const ushort ISOCodeNum = 554;
+            }
+
+
+            public class MXN
+            {
+                public const string ISOCodeAlfa = "MXN";
+                public const ushort ISOCodeNum = 484;
+            }
+            public class CZK
+            {
+                public const string ISOCodeAlfa = "CZK";
+                public const ushort ISOCodeNum = 203;
+            }
+          
         }
+
     }
 }

@@ -2,6 +2,7 @@
 using EWallet.Core.Models.DTO;
 using EWallet.Core.Services.Application;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -24,10 +25,18 @@ namespace EWallet.Core.Request_Handlers.Accounts
         {
             User currentUser = await currentUserService.GetCurrentUserAsync();
 
-            Account accountFrom = currentUser.Wallet.Accounts.FirstOrDefault(x => x.Id == request.FromAccountId);
-            Account accountTo = currentUser.Wallet.Accounts.FirstOrDefault(x => x.Id == request.ToAccountId);
+            Account accountFrom = await accountService.Repository.Set()
+                                                      .Include(x=> x.Currency)
+                                                      .Where(x=> x.WalletId == currentUser.Wallet.Id)
+                                                      .FirstOrDefaultAsync(x => x.Id == request.FromAccountId);
 
-            if(accountFrom is null || accountTo is null)
+
+            Account accountTo = await accountService.Repository.Set()
+                                                      .Include(x => x.Currency)
+                                                      .Where(x => x.WalletId == currentUser.Wallet.Id)
+                                                      .FirstOrDefaultAsync(x => x.Id == request.ToAccountId);
+
+            if (accountFrom is null || accountTo is null)
                 return (false, "Account Id-s are not valid");
 
 

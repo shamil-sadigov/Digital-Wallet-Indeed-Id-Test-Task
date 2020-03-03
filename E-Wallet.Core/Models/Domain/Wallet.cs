@@ -2,6 +2,9 @@
 
 namespace EWallet.Core.Models.Domain
 {
+    /// <summary>
+    /// Digit wallet that belongs to one user and hold many Accounts
+    /// </summary>
     public class Wallet : IEntity<string>
     {
         public string Id { get; set; }

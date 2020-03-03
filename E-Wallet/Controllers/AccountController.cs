@@ -22,12 +22,12 @@ namespace EWallet.Controllers
         }
 
 
-        [Authorize(Policy = AuthorizationPolicies.AccountCreateOnly)]
+        [Authorize(Policy = Core.Models.AuthorizationPolicy.Names.AccountCreate)]
         [HttpGet]
         [TypeFilter(typeof(ValidateCurrencyName))]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(BadRequestResponse))]
-        public async Task<IActionResult> GetPermissionToken([FromQuery] AccountCreationRequest request)
+        public async Task<IActionResult> Create([FromQuery] AccountCreationRequest request)
         {
             var result = await mediator.Send(request);
 
@@ -39,26 +39,7 @@ namespace EWallet.Controllers
 
 
 
-
-        [Authorize(Policy = AuthorizationPolicies.AccountReplenishOrWithdraw)]
-        [HttpPost]
-        [TypeFilter(typeof(ValidateAccountOperation))]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(BadRequestResponse))]
-        public async Task<IActionResult> Replenish([FromBody] AccountOperationRequest request)
-        {
-            var result = await mediator.Send(request);
-
-            if (result.succeeded)
-                return Ok();
-
-            return BadRequest(new BadRequestResponse(result.errorMessage));
-        }
-
-
-
-
-        [Authorize(Policy = AuthorizationPolicies.AccountReplenishOrWithdraw)]
+        [Authorize(Policy = Core.Models.AuthorizationPolicy.Names.AccountReplenish)]
         [HttpPost]
         [TypeFilter(typeof(ValidateAccountOperation))]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -76,7 +57,7 @@ namespace EWallet.Controllers
 
 
 
-        [Authorize(Policy = AuthorizationPolicies.AccountReplenishOrWithdraw)]
+        [Authorize(Policy = Core.Models.AuthorizationPolicy.Names.AccountWithdraw)]
         [HttpPost]
         [TypeFilter(typeof(ValidateAccountOperation))]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -94,7 +75,7 @@ namespace EWallet.Controllers
 
 
 
-        [Authorize(Policy = AuthorizationPolicies.TransferBetweenAccounts)]
+        [Authorize(Policy = Core.Models.AuthorizationPolicy.Names.TransferBetweenAccounts)]
         [HttpPost]
         [TypeFilter(typeof(ValidateAccountTransfer))]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -112,11 +93,11 @@ namespace EWallet.Controllers
 
 
 
-        [Authorize(Policy = AuthorizationPolicies.WalletState)]
+        [Authorize(Policy = Core.Models.AuthorizationPolicy.Names.ViewWalletStateAndHistory)]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AccountDTO[]))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(BadRequestResponse))]
-        public async Task<IActionResult> WalletState()
+        public async Task<IActionResult> State()
         {
             var response = await mediator.Send(new WalletStateRequest());
 
@@ -124,11 +105,13 @@ namespace EWallet.Controllers
         }
 
 
-        [Authorize(Policy = AuthorizationPolicies.WalletState)]
+
+
+        [Authorize(Policy = Core.Models.AuthorizationPolicy.Names.ViewWalletStateAndHistory)]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(OperationDTO[]))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(BadRequestResponse))]
-        public async Task<IActionResult> WalletHistoryRequest()
+        public async Task<IActionResult> OpeartionHistory()
         {
             var response = await mediator.Send(new AccountOperationHistoryRequest());
 

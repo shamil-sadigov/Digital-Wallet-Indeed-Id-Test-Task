@@ -25,10 +25,10 @@ namespace EWallet.Core.Request_Handlers.Accounts
 
         public async Task<OperationDTO[]> Handle(AccountOperationHistoryRequest request, CancellationToken cancellationToken)
         {
-
             User currentUser = await currentUserService.GetCurrentUserAsync();
 
-            var response = await operationRepository.Set().Include(x => x.Account.Wallet.Id == currentUser.Wallet.Id)
+            var response = await operationRepository.Set().Where(x => x.Account.Wallet.Id == currentUser.Wallet.Id)
+                                        .OrderBy(x=> x.Date)
                                         .Select(x => new OperationDTO()
                                         {
                                             Amount = x.Amount,
@@ -38,7 +38,6 @@ namespace EWallet.Core.Request_Handlers.Accounts
                                             Id = x.Id
                                         })
                                         .ToArrayAsync();
-
 
             return response;
         }

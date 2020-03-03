@@ -18,7 +18,7 @@ namespace EWallet.Filters
         {
             var request = RetrieveArgument<PermissionTokenRequest>(context);
 
-            if(!await permissionHelper.AreValidAsync(request.PermissionNames.Select(x=> x.Trim()).Distinct()))
+            if(!await permissionHelper.AreValidAsync(request.PermissionNames.Distinct()))
             {
                 ReturnBadRequest(context, "Permission names are not valid");
                 return;

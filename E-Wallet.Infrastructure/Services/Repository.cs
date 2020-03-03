@@ -23,7 +23,9 @@ namespace EWallet.Persistence.Services
         public async Task SaveChangesAsync()
         {
             await context.SaveChangesAsync();
-            await OnRepositoryUpdateAsync(this);
+
+            if(!(OnRepositoryUpdateAsync is null))
+                await OnRepositoryUpdateAsync.Invoke(this);
         }
     }
 }

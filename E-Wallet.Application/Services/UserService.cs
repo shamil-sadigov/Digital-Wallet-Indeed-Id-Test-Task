@@ -27,17 +27,17 @@ namespace EWallet.Application.Services
             return await userManager.FindByEmailAsync(email);
         }
 
-        public Task GetUserAccountPermissiondToken()
+      
+        public async Task<bool> PasswordValid(User user, string password)
         {
-            throw new NotImplementedException();
+            return await userManager.CheckPasswordAsync(user, password);
         }
 
-     
         public async Task<(User user, string errorMessage)> RegisterUserAsync(UserRegistrationRequest request)
         {
             User newUser = request; // implicit operator 
 
-            var result = await userManager.CreateAsync(newUser);
+            var result = await userManager.CreateAsync(newUser, request.Password);
 
             if (!result.Succeeded)
                 return (null, string.Concat(result.Errors.Select(x => x.Description)));

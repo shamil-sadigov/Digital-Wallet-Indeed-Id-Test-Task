@@ -10,7 +10,7 @@ namespace EWallet.Core.Models.Domain
         /// <summary>
         /// Example: 683, 424
         /// </summary>
-        public ushort IsoNumberCode { get; set; } // natural Primary key
+        public ushort IsoNumberCode { get; set; }
 
         /// <summary>
         /// Example: "RUB" "USD"
@@ -27,21 +27,29 @@ namespace EWallet.Core.Models.Domain
         }
 
 
-        private Currency(ushort IsoNumberCode, string IsoAlfaCode):this()
+        public Currency(ushort IsoNumberCode, string IsoAlfaCode):this()
         {
             this.IsoNumberCode = IsoNumberCode;
             this.IsoAlfaCode = IsoAlfaCode;
         }
 
-    
-        // Example: "RUB" == "Rub"
+
+        /// <summary>
+        /// Compares ISOAlf Codes. Example: "RUB" == "Rub"
+        /// </summary>
+        /// <param name="isoAlfaCode"></param>
+        /// <returns></returns>
         public bool Equals(string isoAlfaCode)
             => IsoAlfaCode.Equals(isoAlfaCode, StringComparison.InvariantCultureIgnoreCase);
-        
-        // Example: 643 == 643
+
+
+        /// <summary>
+        /// Compares ISONumberCodes. Example: 643 == 643
+        /// </summary>
+        /// <param name="isoAlfaCode"></param>
+        /// <returns></returns>
         public bool Equals(ushort isoNumberCode)
             => IsoNumberCode.Equals(isoNumberCode);
-
 
 
         public ICollection<Account> Accounts { get; set; }

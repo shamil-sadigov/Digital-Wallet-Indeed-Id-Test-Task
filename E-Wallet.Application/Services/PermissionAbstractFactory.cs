@@ -1,32 +1,34 @@
-﻿using EWallet.Core.Models.Domain;
+﻿using EWallet.Core.Models;
+using EWallet.Core.Models.Domain;
 using EWallet.Core.Services.Application;
+using static EWallet.Core.Models.ApplicationClaims;
 
 namespace EWallet.Aplication.Services
 {
     public class PermissionAbstractFactory: IPermissionAbstractFactory
     {
         public Permission ForAccountCreate()
-              => new Permission(name: PermissionConstants.AccountCreate,
-                              permissionClaim: new PermissionClaim(PermissionConstants.AccountCreate, allowed: true));
+              => new Permission(name: Permissions.CanCreateAccount,
+                              permissionClaim: new PermissionClaim(Permissions.CanCreateAccount, allowed: true));
 
         public Permission ForAccountReplenish()
-              => new Permission(name: PermissionConstants.AccountReplenish,
-                              permissionClaim: new PermissionClaim(PermissionConstants.AccountReplenish, allowed: true));
+              => new Permission(name: Permissions.CanReplenishAccount,
+                              permissionClaim: new PermissionClaim(Permissions.CanReplenishAccount, allowed: true));
 
         public Permission ForAccountTransfer()
-              => new Permission(name: PermissionConstants.AccountTransfer,
-                              permissionClaim: new PermissionClaim(PermissionConstants.AccountTransfer, allowed: true));
+              => new Permission(name: Permissions.CanTransferBetweenAccounts,
+                              permissionClaim: new PermissionClaim(Permissions.CanTransferBetweenAccounts, allowed: true));
 
         public Permission ForAccountWithdraw()
-              => new Permission(name: PermissionConstants.AccountWithdraw,
-                              permissionClaim: new PermissionClaim(PermissionConstants.AccountWithdraw, allowed: true));
+              => new Permission(name: Permissions.CanWithdrawFromAccount,
+                              permissionClaim: new PermissionClaim(Permissions.CanWithdrawFromAccount, allowed: true));
 
         public Permission ForFullPermission()
-              => new Permission(name: PermissionConstants.FullPermission,
-                              permissionClaim: new PermissionClaim(PermissionConstants.FullPermission, allowed: true));
+              => new Permission(name: Permissions.AllPermissionsAllowed,
+                              permissionClaim: new PermissionClaim(Permissions.AllPermissionsAllowed, allowed: true));
 
         public Permission ForWalletState()
-              => new Permission(name: PermissionConstants.WalletState,
-                              permissionClaim: new PermissionClaim(PermissionConstants.WalletState, allowed: true));
+              => new Permission(name: Permissions.CanViewWalletStateAndOperations,
+                              permissionClaim: new PermissionClaim(Permissions.CanViewWalletStateAndOperations, allowed: true));
     }
 }

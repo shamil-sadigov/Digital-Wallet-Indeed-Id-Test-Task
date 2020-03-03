@@ -22,6 +22,7 @@ namespace EWallet.Core.Models.Domain
             FirstName = firstName;
             LastName = lastName;
             Email = email;
+            UserName = email;
         }
     }
 

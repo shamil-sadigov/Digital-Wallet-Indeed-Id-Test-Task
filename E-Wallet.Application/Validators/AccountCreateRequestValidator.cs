@@ -8,7 +8,7 @@ namespace EWallet.Application.Validators
         public AccountCreateRequestValidator()
         {
             RuleFor(model => model.CurrencyIsoName).NotEmpty()
-                                             .MaximumLength(3);
+                                             .Length(3,3);
 
         }
     }

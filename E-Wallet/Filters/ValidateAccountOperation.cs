@@ -17,7 +17,7 @@ namespace EWallet.Filters
 
         public override async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
-            var request = RetrieveArgument<AccountOperationRequest>(context);
+            var request = RetrieveArgument<AccountOperation>(context);
 
             var result = validator.Validate(request);
 

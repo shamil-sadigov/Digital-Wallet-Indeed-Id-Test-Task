@@ -45,7 +45,13 @@ namespace EWallet.Application.Services
                                    .FirstOrDefault();
         }
 
+        public async Task<Currency> ResolveCurrencyName(ushort currencyIsoCode)
+        {
+            await EnsureCurrencyListInitialized();
 
+            return currencies.Where(currency => currency.Equals(currencyIsoCode))
+                                   .FirstOrDefault();
+        }
 
         #region Local methods
 
@@ -80,6 +86,8 @@ namespace EWallet.Application.Services
 
             return amount * rateToConvert;
         }
+
+       
 
 
         #endregion

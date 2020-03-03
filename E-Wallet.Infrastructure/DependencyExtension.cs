@@ -1,4 +1,5 @@
-﻿using EWallet.Core.Models.Domain;
+﻿using EWallet.Application.Services;
+using EWallet.Core.Models.Domain;
 using EWallet.Core.Services.Persistence;
 using EWallet.Persistence.Services;
 using Microsoft.EntityFrameworkCore;
@@ -16,15 +17,18 @@ namespace EWallet.Persistence
             {
                 ops.User.RequireUniqueEmail = true;
                 ops.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(3);
-                ops.Lockout.MaxFailedAccessAttempts = 3;
+                ops.Lockout.MaxFailedAccessAttempts = 4;
             })
             .AddEntityFrameworkStores<ApplicationContext>();
 
             services.AddDbContext<ApplicationContext>(ops =>
-                ops.UseSqlite("Data Source=application-database.db"));
+                ops.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=TestDb222;Integrated Security=True;"));
+                //ops.UseSqlite("Data Source=application-database.db"));
+
 
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped(typeof(IObservableRepository<>), typeof(Repository<>));
+            services.AddHostedService<DataSeederService>();
         }
     }
 }

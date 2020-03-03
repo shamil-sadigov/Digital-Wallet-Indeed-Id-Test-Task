@@ -1,4 +1,5 @@
-﻿using EWallet.Core.Models.Domain;
+﻿using EWallet.Application.Helper;
+using EWallet.Core.Models.Domain;
 using EWallet.Core.Services.Application;
 using EWallet.Core.Services.Persistence;
 using Microsoft.EntityFrameworkCore;
@@ -34,7 +35,7 @@ namespace EWallet.Application.Services
 
             var foundPermissions = permissions.Select(x => x.Name).Intersect(permissionsNames);
 
-            if (foundPermissions.Count() == permissions.Count())
+            if (foundPermissions.Count() == permissionsNames.Count())
                 return true;
 
             return false;
@@ -61,14 +62,14 @@ namespace EWallet.Application.Services
                     async entry =>
                     {
                         entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(5);
-                        return await permissiontRepository.Set().ToListAsync();
+                        return await permissiontRepository.Set().Include(x => x.Claims).ToListAsync();
                     });
         }
 
 
         private async Task OnPermissionListRepositoryUpdate(IRepositoryBase<Permission> permissionRepository)
         {
-            permissions = await permissionRepository.Set().ToListAsync();
+            permissions = await permissionRepository.Set().Include(x=> x.Claims).ToListAsync();
             memoryCache.Remove(key);
             memoryCache.Set(key, permissions, TimeSpan.FromMinutes(5));
         }

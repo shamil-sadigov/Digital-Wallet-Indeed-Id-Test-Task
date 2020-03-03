@@ -2,6 +2,11 @@
 
 namespace EWallet.Core.Models.Domain
 {
+    /// <summary>
+    /// Claim that represent wether user is allowed to do the action
+    /// Example: If user would like to increate account funds, then permissionToken should
+    /// be provided inside of which permissionClaim is stored that can be with name = "account-replenish" and Allowed = true
+    /// </summary>
     public class PermissionClaim : IEntity<string>
     {
         public string Id { get; set; }

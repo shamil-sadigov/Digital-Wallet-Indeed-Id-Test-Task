@@ -11,12 +11,9 @@ namespace EWallet.Application.Builders
             => account = new Account();
 
 
-        public IAccountBuilder WithCurrency(Currency currency)
+        public IAccountBuilder WithCurrency(ushort currencyIsoCode)
         {
-            if (currency is null)
-                throw new ArgumentNullException(nameof(currency));
-
-            account.Currency = currency;
+            account.CurrencyIsoNumberCode = currencyIsoCode;
             return this;
         }
 

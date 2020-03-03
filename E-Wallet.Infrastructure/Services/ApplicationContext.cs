@@ -11,6 +11,9 @@ namespace EWallet.Persistence.Services
 {
     public class ApplicationContext:IdentityDbContext<User>
     {
+        public DbSet<Currency> Currencies { get; set; }
+        public DbSet<Permission> Permissions{ get; set; }
+
         public ApplicationContext(DbContextOptions<ApplicationContext> ops):base(ops)
         {
 

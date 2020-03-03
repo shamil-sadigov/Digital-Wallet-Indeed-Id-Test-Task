@@ -53,7 +53,7 @@ namespace EWallet.Core.Request_Handlers.User_Registration
             (Account account, string accountErrorMessage) =
                 await accountService.CreateAccountAsync(ops => ops.OnWallet(wallet.Id)
                                                                   .WithBalance(0)
-                                                                  .WithCurrency(Currency.Factory.RUB));
+                                                                  .WithCurrency(Currency.Names.RUB.ISOCodeNum));
 
             if (wallet is null)
                 return (false, accountErrorMessage);
