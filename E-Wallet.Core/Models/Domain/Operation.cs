@@ -14,6 +14,7 @@ namespace EWallet.Core.Models.Domain
         public string AccountId { get; set; }
         public Account Account { get; set; }
 
+
         #endregion
     }
 }

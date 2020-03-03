@@ -110,5 +110,29 @@ namespace EWallet.Controllers
         }
 
 
+
+
+        [Authorize(Policy = AuthorizationPolicies.WalletState)]
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AccountDTO[]))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(BadRequestResponse))]
+        public async Task<IActionResult> WalletState()
+        {
+            var response = await mediator.Send(new WalletStateRequest());
+
+            return Ok(response);
+        }
+
+
+        [Authorize(Policy = AuthorizationPolicies.WalletState)]
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(OperationDTO[]))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(BadRequestResponse))]
+        public async Task<IActionResult> WalletHistoryRequest()
+        {
+            var response = await mediator.Send(new AccountOperationHistoryRequest());
+
+            return Ok(response);
+        }
     }
 }

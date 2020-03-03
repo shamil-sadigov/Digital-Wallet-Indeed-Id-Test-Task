@@ -5,7 +5,7 @@ using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace EWallet.Core.Request_Handlers.Accounts
+namespace EWallet.Core.Request_Handlers.AccountRequests
 {
     public class AccountCreationRequestHandler : IRequestHandler<AccountCreationRequest, (bool succeeded, string errorMessage)>
     {
@@ -27,7 +27,7 @@ namespace EWallet.Core.Request_Handlers.Accounts
             Currency currency = await currencyHelper.ResolveCurrencyName(request.CurrencyIsoName); // validation is done in filter
             User currentUser = await currentUserService.GetCurrentUserAsync();
 
-            (Account account, string accountErrorMessage) = 
+            (Models.Domain.Account account, string accountErrorMessage) = 
                 await accountService.CreateAccountAsync(ops => ops.OnWallet(currentUser.Wallet.Id)
                                                                   .WithBalance(0)
                                                                   .WithCurrency(currency));
