@@ -9,5 +9,7 @@ namespace EWallet.Core.Services.Application
         Task<(Account account, string errorMessage)> CreateAccountAsync(Action<IAccountBuilder> builderOptions);
         Task<(bool succeeded, string errorMessage)> DecreaseBalanceAsync(Account account, decimal amount);
         Task<(bool succeeded, string errorMessage)> IncreaseBalanceAsync(Account account, decimal amount);
+        Task<(bool succeeded, string errorMessage)> TransferAmount(Account fromAccount, Account toAccount, decimal amount);
+
     }
 }

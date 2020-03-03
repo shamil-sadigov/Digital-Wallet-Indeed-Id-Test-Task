@@ -5,7 +5,7 @@ namespace EWallet.Core.Models.Domain
     public class Operation : IEntity<string>
     {
         public string Id { get; set; }
-        public OpeartionDirection Direction { get; set; }
+        public OperationDirection Direction { get; set; }
         public DateTime Date { get; set; }
         public decimal Amount { get; set; }
 
@@ -15,11 +15,5 @@ namespace EWallet.Core.Models.Domain
         public Account Account { get; set; }
 
         #endregion
-    }
-
-
-    public enum OpeartionDirection
-    {
-        In, Out
     }
 }

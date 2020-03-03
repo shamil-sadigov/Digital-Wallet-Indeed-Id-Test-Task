@@ -7,5 +7,7 @@ namespace EWallet.Core.Services.Application
     {
         Task<bool> IsValidCurrencyNameAsync(string currencyIsoName);
         Task<Currency> ResolveCurrencyName(string currencyIsoName);
+
+        Task<decimal> ConvertAsync(Currency from, Currency to, decimal amount);
     }
 }

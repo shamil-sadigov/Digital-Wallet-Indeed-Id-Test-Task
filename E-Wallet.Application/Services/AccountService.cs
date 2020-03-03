@@ -11,11 +11,15 @@ namespace EWallet.Application.Services
 {
     public class AccountService : IAccountService
     {
+        private readonly ICurrencyHelper currencyHelper;
         public IRepository<Account> Repository { get; set; }
 
-        public AccountService(IRepository<Account> repository)
-            => Repository = repository;
-
+        public AccountService(IRepository<Account> repository,
+                             ICurrencyHelper currencyHelper)
+        {
+            Repository = repository;
+            this.currencyHelper = currencyHelper;
+        }
 
         public async Task<(Account account, string errorMessage)> CreateAccountAsync(Action<IAccountBuilder> builderOptions)
         {
@@ -65,6 +69,43 @@ namespace EWallet.Application.Services
             await Repository.SaveChangesAsync();
 
             return (true, string.Empty);
+        }
+
+
+        public async Task<(bool succeeded, string errorMessage)> TransferAmount(Account accountFrom, Account accountTo, decimal transferAmount)
+        {
+            if (transferAmount < 0)
+                throw new ArgumentOutOfRangeException("Amount parameter is less thatn zero");
+
+            if (accountFrom.Balance >= transferAmount)
+            {
+                decimal convertedAmount = await currencyHelper.ConvertAsync(accountFrom.Currency, accountTo.Currency, transferAmount);
+
+                using (var transaction = await Repository.Context.Database.BeginTransactionAsync())
+                {
+                    try
+                    {
+                        accountFrom.Balance -= transferAmount;
+                        accountTo.Balance += convertedAmount;
+
+                        Repository.Set().Update(accountFrom);
+                        Repository.Set().Update(accountTo);
+
+                        await Repository.SaveChangesAsync();
+
+                        await transaction.CommitAsync();
+                    }
+                    catch (Exception)
+                    {
+                        await transaction.RollbackAsync();
+                        throw;
+                    }
+                }
+                
+                return (true, errorMessage: string.Empty);
+            }
+
+            return (false, errorMessage: "Insufficient funds");
         }
     }
 }

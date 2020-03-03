@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static EWallet.Application.Services.ExchangeWebService.ExchangeRoot;
 
 namespace EWallet.Application.Services
 {
@@ -14,15 +15,18 @@ namespace EWallet.Application.Services
     {
         private readonly IMemoryCache memoryCache;
         private readonly IRepository<Currency> currencyRepository;
+        private readonly ExchangeWebService exchangeWebService;
         private List<Currency> currencies;
         private const string key = "currencies";
 
         public CurrencyHelper(IMemoryCache memoryCache,
-                              IRepository<Currency> currencyRepository)
+                              IRepository<Currency> currencyRepository,
+                              ExchangeWebService exchangeWebService)
         {
             this.memoryCache = memoryCache;
             currencyRepository.OnRepositoryUpdateAsync += OnCurrencyRepositoryUpdate;
             this.currencyRepository = currencyRepository;
+            this.exchangeWebService = exchangeWebService;
         }
 
 
@@ -62,6 +66,21 @@ namespace EWallet.Application.Services
                         return await currencyRepository.Set().ToListAsync();
                     });
         }
+
+
+        public async Task<decimal> ConvertAsync(Currency currencyFrom, Currency currencyTo, decimal amount)
+        {
+            var rates = await exchangeWebService.GetExchangeRatesAsync(baseCurrency: currencyFrom.IsoAlfaCode);
+
+            var rateToConvertGetter = rates.GetType().GetProperty(currencyTo.IsoAlfaCode)
+                                           .GetGetMethod()
+                                           .CreateDelegate(typeof(Func<Rate, decimal>)) as Func<Rate, decimal>;
+
+            decimal rateToConvert = rateToConvertGetter(rates);
+
+            return amount * rateToConvert;
+        }
+
 
         #endregion
     }

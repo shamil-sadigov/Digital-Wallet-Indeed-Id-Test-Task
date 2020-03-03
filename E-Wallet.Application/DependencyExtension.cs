@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using System;
 
 namespace EWallet.Application
 {
@@ -13,6 +14,11 @@ namespace EWallet.Application
         public static void AddApplicationServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddMemoryCache();
+
+
+            services.AddHttpClient<ExchangeWebService>(ops 
+                => ops.BaseAddress = new Uri("https://api.exchangeratesapi.io"));
+
 
             services.Configure<JwtOptions>(ops =>
             configuration.GetSection(nameof(JwtOptions)).Bind(ops));

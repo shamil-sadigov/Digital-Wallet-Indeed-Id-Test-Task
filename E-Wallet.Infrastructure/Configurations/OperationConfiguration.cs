@@ -15,7 +15,7 @@ namespace EWallet.Persistence.Configurations
 
             operation.ToTable("Operations");
 
-            operation.Property(x => x.Direction).HasConversion(new EnumToStringConverter<OpeartionDirection>());
+            operation.Property(x => x.Direction).HasConversion(new EnumToStringConverter<OperationDirection>());
 
             operation.HasOne(x => x.Account)
                      .WithMany(x => x.Operations)

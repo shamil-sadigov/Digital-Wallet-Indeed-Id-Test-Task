@@ -12,6 +12,9 @@ namespace EWallet.Persistence.Services
         public Repository(ApplicationContext ctx)
             => context = ctx;
 
+
+        public DbContext Context { get => context; }
+
         public DbSet<T> Set()
             => context.Set<T>();
 

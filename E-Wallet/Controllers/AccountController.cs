@@ -1,8 +1,5 @@
 ﻿using EWallet.Core.Models;
-using EWallet.Core.Models.Domain;
 using EWallet.Core.Models.DTO;
-using EWallet.Core.Services.Application;
-using EWallet.Core.Services.Persistence;
 using EWallet.Filters;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -31,6 +28,78 @@ namespace EWallet.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(BadRequestResponse))]
         public async Task<IActionResult> GetPermissionToken([FromQuery] AccountCreationRequest request)
+        {
+            var result = await mediator.Send(request);
+
+            if (result.succeeded)
+                return Ok();
+
+            return BadRequest(new BadRequestResponse(result.errorMessage));
+        }
+
+
+
+
+        [Authorize(Policy = AuthorizationPolicies.AccountReplenishOrWithdraw)]
+        [HttpPost]
+        [TypeFilter(typeof(ValidateAccountOperation))]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(BadRequestResponse))]
+        public async Task<IActionResult> Replenish([FromBody] AccountOperationRequest request)
+        {
+            var result = await mediator.Send(request);
+
+            if (result.succeeded)
+                return Ok();
+
+            return BadRequest(new BadRequestResponse(result.errorMessage));
+        }
+
+
+
+
+        [Authorize(Policy = AuthorizationPolicies.AccountReplenishOrWithdraw)]
+        [HttpPost]
+        [TypeFilter(typeof(ValidateAccountOperation))]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(BadRequestResponse))]
+        public async Task<IActionResult> Replenish([FromBody] AccountOperation request)
+        {
+            var result = await mediator.Send(AccountOperationRequest.InOperation(request));
+
+            if (result.succeeded)
+                return Ok();
+
+            return BadRequest(new BadRequestResponse(result.errorMessage));
+        }
+
+
+
+
+        [Authorize(Policy = AuthorizationPolicies.AccountReplenishOrWithdraw)]
+        [HttpPost]
+        [TypeFilter(typeof(ValidateAccountOperation))]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(BadRequestResponse))]
+        public async Task<IActionResult> Withdraw([FromBody] AccountOperation request)
+        {
+            var result = await mediator.Send(AccountOperationRequest.OutOperation(request));
+
+            if (result.succeeded)
+                return Ok();
+
+            return BadRequest(new BadRequestResponse(result.errorMessage));
+        }
+
+
+
+
+        [Authorize(Policy = AuthorizationPolicies.TransferBetweenAccounts)]
+        [HttpPost]
+        [TypeFilter(typeof(ValidateAccountTransfer))]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(BadRequestResponse))]
+        public async Task<IActionResult> Transfer([FromBody] AccountTransferRequest request)
         {
             var result = await mediator.Send(request);
 
