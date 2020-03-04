@@ -48,4 +48,8 @@ Follow these steps to get your development environment set up:
 
 ## Web api documentation avaliable in swagger
 
-![IndexPage](Will be provided)
+![Docs](https://raw.githubusercontent.com/ShamilMS/Digital-Wallet-Indeed-Id-Test-Task/master/Docs/api-swagger.png)
+
+### Expanded view
+
+![Docs](https://raw.githubusercontent.com/ShamilMS/Digital-Wallet-Indeed-Id-Test-Task/master/Docs/api-swagger-documentation.png)
