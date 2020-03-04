@@ -47,12 +47,12 @@ namespace EWallet.Controllers
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         public async Task<IActionResult> Create([FromQuery] AccountCreationRequest request)
         {
-            var result = await mediator.Send(request);
+            var (succeeded, errorMessage) = await mediator.Send(request);
 
-            if (result.succeeded)
+            if (succeeded)
                 return Ok();
 
-            return BadRequest(new BadRequestResponse(result.errorMessage));
+            return BadRequest(new BadRequestResponse(errorMessage));
         }
 
 
@@ -79,12 +79,12 @@ namespace EWallet.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(BadRequestResponse))]
         public async Task<IActionResult> Replenish([FromBody] AccountOperation request)
         {
-            var result = await mediator.Send(AccountOperationRequest.InOperation(request));
+            var (succeeded, errorMessage) = await mediator.Send(AccountOperationRequest.InOperation(request));
 
-            if (result.succeeded)
+            if (succeeded)
                 return Ok();
 
-            return BadRequest(new BadRequestResponse(result.errorMessage));
+            return BadRequest(new BadRequestResponse(errorMessage));
         }
 
 
@@ -111,12 +111,12 @@ namespace EWallet.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(BadRequestResponse))]
         public async Task<IActionResult> Withdraw([FromBody] AccountOperation request)
         {
-            var result = await mediator.Send(AccountOperationRequest.OutOperation(request));
+            var (succeeded, errorMessage) = await mediator.Send(AccountOperationRequest.OutOperation(request));
 
-            if (result.succeeded)
+            if (succeeded)
                 return Ok();
 
-            return BadRequest(new BadRequestResponse(result.errorMessage));
+            return BadRequest(new BadRequestResponse(errorMessage));
         }
 
 
@@ -142,12 +142,12 @@ namespace EWallet.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(BadRequestResponse))]
         public async Task<IActionResult> Transfer([FromBody] AccountTransferRequest request)
         {
-            var result = await mediator.Send(request);
+            var (succeeded, errorMessage) = await mediator.Send(request);
 
-            if (result.succeeded)
+            if (succeeded)
                 return Ok();
 
-            return BadRequest(new BadRequestResponse(result.errorMessage));
+            return BadRequest(new BadRequestResponse(errorMessage));
         }
 
 

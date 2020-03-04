@@ -33,9 +33,13 @@ namespace EWallet.Application.Services
         {
             await EnsurePermissionsInitialized();
 
-            var foundPermissions = permissions.Select(x => x.Name).Intersect(permissionsNames);
+            permissions.Select(x => x.Name)
+                       .Intersect(permissionsNames)
+                       .Count()
+                       .PredicatePassed(count => count == permissionsNames.Count(),
+                        out bool permissionNamesValid);
 
-            if (foundPermissions.Count() == permissionsNames.Count())
+            if (permissionNamesValid)
                 return true;
 
             return false;
@@ -44,6 +48,7 @@ namespace EWallet.Application.Services
 
         public async Task<IEnumerable<PermissionClaim>> BuildClaimsAsync(IEnumerable<string> permissionsNames)
         {
+            // no need validating permission names since it's already validated in controller filters
             await EnsurePermissionsInitialized();
             var foundPermissions = permissions.Where(x => permissionsNames.Contains(x.Name));
             return foundPermissions.SelectMany(x => x.Claims);

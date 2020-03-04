@@ -39,12 +39,12 @@ namespace EWallet.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(BadRequestResponse))]
         public async Task<IActionResult> Register([FromBody] UserRegistrationRequest request)
         {
-            var result = await mediator.Send(request);
+            var (succeeded, errorMessage) = await mediator.Send(request);
 
-            if (result.succeeded)
+            if (succeeded)
                 return Ok();
 
-            return BadRequest(new BadRequestResponse(result.errorMessage));
+            return BadRequest(new BadRequestResponse(errorMessage));
         }
     }
 }
