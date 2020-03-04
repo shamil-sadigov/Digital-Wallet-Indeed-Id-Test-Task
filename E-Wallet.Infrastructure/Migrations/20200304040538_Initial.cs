@@ -11,7 +11,7 @@ namespace EWallet.Persistence.Migrations
                 name: "Currencies",
                 columns: table => new
                 {
-                    IsoNumberCode = table.Column<int>(nullable: false),
+                    IsoNumberCode = table.Column<ushort>(nullable: false),
                     IsoAlfaCode = table.Column<string>(maxLength: 3, nullable: false)
                 },
                 constraints: table =>
@@ -103,7 +103,7 @@ namespace EWallet.Persistence.Migrations
                     Id = table.Column<string>(nullable: false),
                     Balance = table.Column<decimal>(nullable: false),
                     WalletId = table.Column<string>(nullable: true),
-                    CurrencyIsoNumberCode = table.Column<int>(nullable: false)
+                    CurrencyIsoNumberCode = table.Column<ushort>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -172,15 +172,13 @@ namespace EWallet.Persistence.Migrations
                 name: "UserNameIndex",
                 table: "Users",
                 column: "NormalizedUserName",
-                unique: true,
-                filter: "[NormalizedUserName] IS NOT NULL");
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Wallets_UserId",
                 table: "Wallets",
                 column: "UserId",
-                unique: true,
-                filter: "[UserId] IS NOT NULL");
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

@@ -21,7 +21,7 @@ namespace EWallet.Helper
             {
                 ops.SwaggerDoc("v1", new OpenApiInfo
                 {
-                    Title = "Schoolman - WebAPI",
+                    Title = "E-Wallet- WebAPI",
                     Version = "v1"
 
                 });
@@ -54,6 +54,10 @@ namespace EWallet.Helper
         }
 
 
+        /// <summary>
+        /// Registers all filters in current assembly
+        /// </summary>
+        /// <param name="services"></param>
         public static void AddApplicationFilters(this IServiceCollection services)
         {
             Assembly.GetExecutingAssembly()
@@ -61,12 +65,6 @@ namespace EWallet.Helper
                     .Where(x => (typeof(ValidationAttributeBase).IsAssignableFrom(x)) && !x.IsAbstract)
                     .ToList()
                     .ForEach(filterType => services.AddScoped(filterType));
-
-
-            //services.AddScoped<ValidateUserRegistration>();
-            //services.AddScoped<ValidateUserAuthTokenRequest>();
-            //services.AddScoped<ValidatePermissionTokenRequest>();
-            //services.AddScoped<ValidateCurrencyName>();
 
         }
 

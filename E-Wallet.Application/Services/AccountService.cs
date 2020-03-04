@@ -98,16 +98,6 @@ namespace EWallet.Application.Services
                         await DecreaseBalanceAsync(accountFrom, transferAmount);
                         await IncreaseBalanceAsync(accountTo, convertedAmount);
 
-
-
-                        //accountFrom.Balance -= transferAmount;
-                        //accountTo.Balance += convertedAmount;
-
-                        //Repository.Set().Update(accountFrom);
-                        //Repository.Set().Update(accountTo);
-
-                        //await Repository.SaveChangesAsync();
-
                         await transaction.CommitAsync();
                     }
                     catch (Exception)

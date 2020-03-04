@@ -7,7 +7,7 @@
         <member name="M:EWallet.Controllers.AccoutController.Create(EWallet.Core.Models.DTO.AccountCreationRequest)">
             <remarks>
             <b style="color: #f14d2f;align-contentalign-content:;" >
-            Before use this action, ensure you got permission token named "account-create" or "all-permission"
+            Before use this action, ensure you got permission token named "account-create" or "all-permissions"
             from endpoint /api/token/getPermissionToken
             and added this token in Authorization header of HTTP request (Example: Authorization: Bearer your_auth_token)</b><br/> <br/> 
             This action takes currency code name of ISO 4217 and creates new Account for user
@@ -24,7 +24,7 @@
         <member name="M:EWallet.Controllers.AccoutController.Replenish(EWallet.Core.Models.DTO.AccountOperation)">
             <remarks>
             <b style="color: #f14d2f;align-contentalign-content:;" >
-            Before use this action, ensure you got permission token named "account-replenish" or "all-permission"
+            Before use this action, ensure you got permission token named "account-replenish" or "all-permissions"
             from endpoint /api/token/getPermissionToken
             and added this token in Authorization header of HTTP request (Example: Authorization: Bearer your_auth_token)</b><br/> <br/> 
             This action replenish funds on specified accountId by specified amount
@@ -40,7 +40,7 @@
         <member name="M:EWallet.Controllers.AccoutController.Withdraw(EWallet.Core.Models.DTO.AccountOperation)">
             <remarks>
             <b style="color: #f14d2f;align-contentalign-content:;" >
-            Before use this action, ensure you got permission token named "account-withdraw" or "all-permission"
+            Before use this action, ensure you got permission token named "account-withdraw" or "all-permissions"
             from endpoint /api/token/getPermissionToken
             and added this token in Authorization header of HTTP request (Example: Authorization: Bearer your_auth_token)</b><br/> <br/> 
             This action withdraw funds from specified accountId by specified amount
@@ -56,7 +56,7 @@
         <member name="M:EWallet.Controllers.AccoutController.Transfer(EWallet.Core.Models.DTO.AccountTransferRequest)">
             <remarks>
             <b style="color: #f14d2f;align-contentalign-content:;" >
-            Before use this action, ensure you got permission token named "accounts-transfer" or "all-permission"
+            Before use this action, ensure you got permission token named "accounts-transfer" or "all-permissions"
             from endpoint /api/token/getPermissionToken
             and added this token in Authorization header of HTTP request (Example: Authorization: Bearer your_auth_token)</b><br/> <br/> 
             This action transfer funds from one account to another account
@@ -72,7 +72,7 @@
         <member name="M:EWallet.Controllers.AccoutController.State">
             <remarks>
             <b style="color: #f14d2f;align-contentalign-content:;" >
-            Before use this action, ensure you got permission token named "wallet-state" or "all-permission"
+            Before use this action, ensure you got permission token named "wallet-state" or "all-permissions"
             from endpoint /api/token/getPermissionToken
             and added this token in Authorization header of HTTP request (Example: Authorization: Bearer your_auth_token)</b><br/> <br/> 
             This action returns all your accounts and it's balance and currency
@@ -86,7 +86,7 @@
         <member name="M:EWallet.Controllers.AccoutController.OpeartionHistory">
             <remarks>
             <b style="color: #f14d2f;align-contentalign-content:;" >
-            Before use this action, ensure you got permission token named "wallet-state" or "all-permission"
+            Before use this action, ensure you got permission token named "wallet-state" or "all-permissions"
             from endpoint /api/token/getPermissionToken
             and added this token in Authorization header of HTTP request (Example: Authorization: Bearer your_auth_token)</b><br/> <br/> 
             This action returns all oeprations made on user accounts like withdrawal, perplenishment, transfer and so on...
@@ -155,6 +155,12 @@
             </remarks>
             <response code="200">In case user provided valid permissions name, permission token is returned</response>
             <response code="400">In cases user provided invalid permission names</response>
+        </member>
+        <member name="M:EWallet.Helper.HelperExtensions.AddApplicationFilters(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registers all filters in current assembly
+            </summary>
+            <param name="services"></param>
         </member>
     </members>
 </doc>

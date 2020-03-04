@@ -5,4 +5,3 @@ E:\Documents\Projects\Indeed Id\Project\src\E-Wallet\E-Wallet.Core\obj\Debug\net
 E:\Documents\Projects\Indeed Id\Project\src\E-Wallet\E-Wallet.Core\bin\Debug\netcoreapp3.1\E-Wallet.Core.pdb
 E:\Documents\Projects\Indeed Id\Project\src\E-Wallet\E-Wallet.Core\obj\Debug\netcoreapp3.1\E-Wallet.Core.dll
 E:\Documents\Projects\Indeed Id\Project\src\E-Wallet\E-Wallet.Core\obj\Debug\netcoreapp3.1\E-Wallet.Core.pdb
-E:\Documents\Projects\Indeed Id\Project\src\E-Wallet\E-Wallet.Core\obj\Debug\netcoreapp3.1\E-Wallet.Core.csprojAssemblyReference.cache

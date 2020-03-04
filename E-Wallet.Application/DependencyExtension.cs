@@ -80,8 +80,6 @@ namespace EWallet.Application
                 ops.AddPolicy(name: AuthorizationPolicy.Names.ViewWalletStateAndHistory,
                  configurePolicy: AuthorizationPolicy.Configurations.ViewWalletState());
 
-
-
             });
         }
     }

@@ -22,8 +22,7 @@ namespace EWallet.Persistence
             .AddEntityFrameworkStores<ApplicationContext>();
 
             services.AddDbContext<ApplicationContext>(ops =>
-                ops.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=TestDb222;Integrated Security=True;"));
-                //ops.UseSqlite("Data Source=application-database.db"));
+                 ops.UseSqlite("Data Source=application-database.db"));
 
 
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
