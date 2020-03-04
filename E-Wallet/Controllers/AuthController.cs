@@ -1,7 +1,4 @@
-﻿using EWallet.Core.Models.Domain;
-using EWallet.Core.Models.DTO;
-using EWallet.Core.Services.Application;
-using EWallet.Core.Services.Persistence;
+﻿using EWallet.Core.Models.DTO;
 using EWallet.Filters;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -19,8 +16,23 @@ namespace EWallet.Controllers
 
         public AuthController(IMediator mediator)
             => this.mediator = mediator;
-        
 
+
+        /// <remarks>
+        /// This action registers new User with new digit wallet that has by default one account in RUB currency. 
+        /// <br/> 
+        /// Well, after this action, you had better get auhentication token from endpoint => /api/token/getUserAuthenticationToken
+        /// <br/><br/> 
+        /// <b style="color: #f14d2f;align-contentalign-content:;" > 
+        /// Password Must have:</b> <br/> <br/> 
+        /// Digit (0123456789) <br/>
+        /// Lowecase character (a-z) <br/>
+        /// Uppercase character (A-Z) <br/>
+        /// Non-Alphanumeric character (!@#$ ....) <br/>
+        /// Length >=6 <br/>
+        /// </remarks>
+        /// <response code="200">In case user registered successfully</response>
+        /// <response code="400">In cases when: Password is invalid, Email is already registered, Properties are empty and so on...</response>
         [HttpPost]
         [TypeFilter(typeof(ValidateUserRegistration))]
         [ProducesResponseType(StatusCodes.Status200OK)]

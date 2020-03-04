@@ -4,5 +4,157 @@
         <name>E-Wallet.Web</name>
     </assembly>
     <members>
+        <member name="M:EWallet.Controllers.AccoutController.Create(EWallet.Core.Models.DTO.AccountCreationRequest)">
+            <remarks>
+            <b style="color: #f14d2f;align-contentalign-content:;" >
+            Before use this action, ensure you got permission token named "account-create" or "all-permission"
+            from endpoint /api/token/getPermissionToken
+            and added this token in Authorization header of HTTP request (Example: Authorization: Bearer your_auth_token)</b><br/> <br/> 
+            This action takes currency code name of ISO 4217 and creates new Account for user
+            <br/> <br/> <br/> 
+            <b>Application supports following currencies:</b><br/> 
+            "RUB", "USD", "JPY", "THB", "NZD", "MXN", "CZK" <br/><br/>
+            Please, provide one currency name from the above list<br/> <br/>
+            </remarks>
+            <response code="200">In case user provided valid currency name, new Account with provided currency created</response>
+            <response code="400">In case user provided invalid currency name</response>
+            <response code="401">In case user unauthorized</response>
+            <response code="403">In case user authorized, byt made it wrong 😏</response>
+        </member>
+        <member name="M:EWallet.Controllers.AccoutController.Replenish(EWallet.Core.Models.DTO.AccountOperation)">
+            <remarks>
+            <b style="color: #f14d2f;align-contentalign-content:;" >
+            Before use this action, ensure you got permission token named "account-replenish" or "all-permission"
+            from endpoint /api/token/getPermissionToken
+            and added this token in Authorization header of HTTP request (Example: Authorization: Bearer your_auth_token)</b><br/> <br/> 
+            This action replenish funds on specified accountId by specified amount
+            <br/> <br/> <br/> 
+            <b>If you don't know your AccountId:</b><br/> 
+            You can get it from endpoint /api/account/state <br/> <br/>
+            </remarks>
+            <response code="200">In case user provided valid AccoutnId and amount, fund replenishment successfully completed</response>
+            <response code="400">In case user provided invalid AccountId or amount</response>
+            <response code="401">In case user unauthorized</response>
+            <response code="403">In case user authorized, byt made it wrong 😏</response>
+        </member>
+        <member name="M:EWallet.Controllers.AccoutController.Withdraw(EWallet.Core.Models.DTO.AccountOperation)">
+            <remarks>
+            <b style="color: #f14d2f;align-contentalign-content:;" >
+            Before use this action, ensure you got permission token named "account-withdraw" or "all-permission"
+            from endpoint /api/token/getPermissionToken
+            and added this token in Authorization header of HTTP request (Example: Authorization: Bearer your_auth_token)</b><br/> <br/> 
+            This action withdraw funds from specified accountId by specified amount
+            <br/> <br/> <br/> 
+            <b>If you don't know your AccountId:</b><br/> 
+            You can get it from endpoint /api/account/state <br/> <br/>
+            </remarks>
+            <response code="200">In case user provided valid AccoutnId, fund withdrawal successfully completed</response>
+            <response code="400">In case user provided invalid AccountId or amount</response>
+            <response code="401">In case user unauthorized</response>
+            <response code="403">In case user authorized, byt made it wrong 😏</response>
+        </member>
+        <member name="M:EWallet.Controllers.AccoutController.Transfer(EWallet.Core.Models.DTO.AccountTransferRequest)">
+            <remarks>
+            <b style="color: #f14d2f;align-contentalign-content:;" >
+            Before use this action, ensure you got permission token named "accounts-transfer" or "all-permission"
+            from endpoint /api/token/getPermissionToken
+            and added this token in Authorization header of HTTP request (Example: Authorization: Bearer your_auth_token)</b><br/> <br/> 
+            This action transfer funds from one account to another account
+            <br/> <br/> <br/> 
+            <b>If you don't know your AccountId:</b><br/> 
+            You can get it from endpoint /api/account/state <br/> <br/>
+            </remarks>
+            <response code="200">In case user provided valid AccoutnId-s, fund transfer successfully completed</response>
+            <response code="400">In case user provided invalid AccountId or amount</response>
+            <response code="401">In case user unauthorized</response>
+            <response code="403">In case user authorized, byt made it wrong 😏</response>
+        </member>
+        <member name="M:EWallet.Controllers.AccoutController.State">
+            <remarks>
+            <b style="color: #f14d2f;align-contentalign-content:;" >
+            Before use this action, ensure you got permission token named "wallet-state" or "all-permission"
+            from endpoint /api/token/getPermissionToken
+            and added this token in Authorization header of HTTP request (Example: Authorization: Bearer your_auth_token)</b><br/> <br/> 
+            This action returns all your accounts and it's balance and currency
+            <br/> <br/> <br/> 
+            </remarks>
+            <response code="200">In case user provided valid currency name, new Account with provided currency created</response>
+            <response code="400">In case user provided invalid currency name</response>
+            <response code="401">In case user unauthorized</response>
+            <response code="403">In case user authorized, byt made it wrong 😏</response>
+        </member>
+        <member name="M:EWallet.Controllers.AccoutController.OpeartionHistory">
+            <remarks>
+            <b style="color: #f14d2f;align-contentalign-content:;" >
+            Before use this action, ensure you got permission token named "wallet-state" or "all-permission"
+            from endpoint /api/token/getPermissionToken
+            and added this token in Authorization header of HTTP request (Example: Authorization: Bearer your_auth_token)</b><br/> <br/> 
+            This action returns all oeprations made on user accounts like withdrawal, perplenishment, transfer and so on...
+            <br/> <br/> <br/> 
+            </remarks>
+            <response code="200">In case user provided valid currency name, new Account with provided currency created</response>
+            <response code="400">In case user provided invalid currency name</response>
+            <response code="401">In case user unauthorized</response>
+            <response code="403">In case user authorized, byt made it wrong 😏</response>
+        </member>
+        <member name="M:EWallet.Controllers.AuthController.Register(EWallet.Core.Models.DTO.UserRegistrationRequest)">
+            <remarks>
+            This action registers new User with new digit wallet that has by default one account in RUB currency. 
+            <br/> 
+            Well, after this action, you had better get auhentication token from endpoint => /api/token/getUserAuthenticationToken
+            <br/><br/> 
+            <b style="color: #f14d2f;align-contentalign-content:;" > 
+            Password Must have:</b> <br/> <br/> 
+            Digit (0123456789) <br/>
+            Lowecase character (a-z) <br/>
+            Uppercase character (A-Z) <br/>
+            Non-Alphanumeric character (!@#$ ....) <br/>
+            Length >=6 <br/>
+            </remarks>
+            <response code="200">In case user registered successfully</response>
+            <response code="400">In cases when: Password is invalid, Email is already registered, Properties are empty and so on...</response>
+        </member>
+        <member name="M:EWallet.Controllers.TokenController.GetUserAuthenticationToken(EWallet.Core.Models.DTO.UserAuthTokenRequest)">
+            <remarks>
+            <b style="color: #f14d2f;align-contentalign-content:;" >
+            Before use this action, ensure you registered a user in endpoint /api/auth/register</b><br/> <br/> 
+            This action takes registered user credentials and returns user authentication token
+            <br/> <br/> <br/> 
+            <b>What authenticaion token is used for ?</b><br/> 
+            Well, Primarily authentication token is only for getting another token namely "PermissionToken".
+            You cannot do anything with authentication token except for getting "PermissionToken". So ...<br/><br/> <br/> 
+            <b style="color: #f14d2f;align-contentalign-content:;" > 
+            To get familiar with "Permission token" please read description of endpoint => /api/token/getPermissionToken</b>
+            <br/><br/> 
+            </remarks>
+            <response code="200">In case user provided valid credentials, token is returned</response>
+            <response code="400">In cases when: Email or password invalid. Email is not registere and so on...</response>
+        </member>
+        <member name="M:EWallet.Controllers.TokenController.GetPermissionToken(EWallet.Core.Models.DTO.PermissionTokenRequest)">
+            <remarks>
+            <b style="color: #f14d2f;align-contentalign-content:;" >
+            Before use this action, ensure you got authentication token from endpoint /api/token/getUserAuthenticationToken
+            and added this token in Authorization header of HTTP request (Example: Authorization: Bearer your_auth_token)</b><br/> <br/> 
+            This action takes permission names and generates token based on provided permission names which called Permission token
+            <br/> <br/> <br/> 
+            <b>What is Permission?</b><br/> 
+            Well, permission allow you to act in a constrained scope.<br/> 
+            Example 1: PermissionToken with name "account-create"
+            will allow user only to create a new account. User won't be able to replenish or withdraw funds from account
+            <br/> 
+            Example 2: PermissionToken with name "account-replenish"
+            will allow user only to replenish funds on account. User won't be able to withdraw funds from account, or create new account or whatever <br/> 
+            User can have one permission token that allow you different scopes ["account-create", "account-withdraw"] with one token<br/> <br/> 
+            <b>Permission name list:</b><br/> 
+            "account-create" => allows to create new account for user<br/> 
+            "account-replenish" => allows to replenish funds on user account<br/> 
+            "account-withdraw" => allows to withdraw funds on user account<br/> 
+            "accounts-transfer" => allows to transfer funds between user accounts<br/> 
+            "wallet-state" => allow to view user accounts' state and also all operations made on user account<br/> 
+            "all-permissions" => allow all permission listed above<br/> <br/>
+            </remarks>
+            <response code="200">In case user provided valid permissions name, permission token is returned</response>
+            <response code="400">In cases user provided invalid permission names</response>
+        </member>
     </members>
 </doc>

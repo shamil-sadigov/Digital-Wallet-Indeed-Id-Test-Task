@@ -22,11 +22,29 @@ namespace EWallet.Controllers
         }
 
 
+
+        /// <remarks>
+        /// <b style="color: #f14d2f;align-contentalign-content:;" >
+        /// Before use this action, ensure you got permission token named "account-create" or "all-permissions"
+        /// from endpoint /api/token/getPermissionToken
+        /// and added this token in Authorization header of HTTP request (Example: Authorization: Bearer your_auth_token)</b><br/> <br/> 
+        /// This action takes currency code name of ISO 4217 and creates new Account for user
+        /// <br/> <br/> <br/> 
+        /// <b>Application supports following currencies:</b><br/> 
+        /// "RUB", "USD", "JPY", "THB", "NZD", "MXN", "CZK" <br/><br/>
+        /// Please, provide one currency name from the above list<br/> <br/>
+        /// </remarks>
+        /// <response code="200">In case user provided valid currency name, new Account with provided currency created</response>
+        /// <response code="400">In case user provided invalid currency name</response>
+        /// <response code="401">In case user unauthorized</response>
+        /// <response code="403">In case user authorized, byt made it wrong 😏</response>
         [Authorize(Policy = Core.Models.AuthorizationPolicy.Names.AccountCreate)]
         [HttpGet]
         [TypeFilter(typeof(ValidateCurrencyName))]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(BadRequestResponse))]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
         public async Task<IActionResult> Create([FromQuery] AccountCreationRequest request)
         {
             var result = await mediator.Send(request);
@@ -39,6 +57,21 @@ namespace EWallet.Controllers
 
 
 
+
+        /// <remarks>
+        /// <b style="color: #f14d2f;align-contentalign-content:;" >
+        /// Before use this action, ensure you got permission token named "account-replenish" or "all-permissions"
+        /// from endpoint /api/token/getPermissionToken
+        /// and added this token in Authorization header of HTTP request (Example: Authorization: Bearer your_auth_token)</b><br/> <br/> 
+        /// This action replenish funds on specified accountId by specified amount
+        /// <br/> <br/> <br/> 
+        /// <b>If you don't know your AccountId:</b><br/> 
+        /// You can get it from endpoint /api/account/state <br/> <br/>
+        /// </remarks>
+        /// <response code="200">In case user provided valid AccoutnId and amount, fund replenishment successfully completed</response>
+        /// <response code="400">In case user provided invalid AccountId or amount</response>
+        /// <response code="401">In case user unauthorized</response>
+        /// <response code="403">In case user authorized, byt made it wrong 😏</response>
         [Authorize(Policy = Core.Models.AuthorizationPolicy.Names.AccountReplenish)]
         [HttpPost]
         [TypeFilter(typeof(ValidateAccountOperation))]
@@ -57,6 +90,20 @@ namespace EWallet.Controllers
 
 
 
+        /// <remarks>
+        /// <b style="color: #f14d2f;align-contentalign-content:;" >
+        /// Before use this action, ensure you got permission token named "account-withdraw" or "all-permissions"
+        /// from endpoint /api/token/getPermissionToken
+        /// and added this token in Authorization header of HTTP request (Example: Authorization: Bearer your_auth_token)</b><br/> <br/> 
+        /// This action withdraw funds from specified accountId by specified amount
+        /// <br/> <br/> <br/> 
+        /// <b>If you don't know your AccountId:</b><br/> 
+        /// You can get it from endpoint /api/account/state <br/> <br/>
+        /// </remarks>
+        /// <response code="200">In case user provided valid AccoutnId, fund withdrawal successfully completed</response>
+        /// <response code="400">In case user provided invalid AccountId or amount</response>
+        /// <response code="401">In case user unauthorized</response>
+        /// <response code="403">In case user authorized, byt made it wrong 😏</response>
         [Authorize(Policy = Core.Models.AuthorizationPolicy.Names.AccountWithdraw)]
         [HttpPost]
         [TypeFilter(typeof(ValidateAccountOperation))]
@@ -74,7 +121,20 @@ namespace EWallet.Controllers
 
 
 
-
+        /// <remarks>
+        /// <b style="color: #f14d2f;align-contentalign-content:;" >
+        /// Before use this action, ensure you got permission token named "accounts-transfer" or "all-permissions"
+        /// from endpoint /api/token/getPermissionToken
+        /// and added this token in Authorization header of HTTP request (Example: Authorization: Bearer your_auth_token)</b><br/> <br/> 
+        /// This action transfer funds from one account to another account
+        /// <br/> <br/> <br/> 
+        /// <b>If you don't know your AccountId:</b><br/> 
+        /// You can get it from endpoint /api/account/state <br/> <br/>
+        /// </remarks>
+        /// <response code="200">In case user provided valid AccoutnId-s, fund transfer successfully completed</response>
+        /// <response code="400">In case user provided invalid AccountId or amount</response>
+        /// <response code="401">In case user unauthorized</response>
+        /// <response code="403">In case user authorized, byt made it wrong 😏</response>
         [Authorize(Policy = Core.Models.AuthorizationPolicy.Names.TransferBetweenAccounts)]
         [HttpPost]
         [TypeFilter(typeof(ValidateAccountTransfer))]
@@ -92,7 +152,18 @@ namespace EWallet.Controllers
 
 
 
-
+        /// <remarks>
+        /// <b style="color: #f14d2f;align-contentalign-content:;" >
+        /// Before use this action, ensure you got permission token named "wallet-state" or "all-permissions"
+        /// from endpoint /api/token/getPermissionToken
+        /// and added this token in Authorization header of HTTP request (Example: Authorization: Bearer your_auth_token)</b><br/> <br/> 
+        /// This action returns all your accounts and it's balance and currency
+        /// <br/> <br/> <br/> 
+        /// </remarks>
+        /// <response code="200">In case user provided valid currency name, new Account with provided currency created</response>
+        /// <response code="400">In case user provided invalid currency name</response>
+        /// <response code="401">In case user unauthorized</response>
+        /// <response code="403">In case user authorized, byt made it wrong 😏</response>
         [Authorize(Policy = Core.Models.AuthorizationPolicy.Names.ViewWalletStateAndHistory)]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AccountDTO[]))]
@@ -106,7 +177,18 @@ namespace EWallet.Controllers
 
 
 
-
+        /// <remarks>
+        /// <b style="color: #f14d2f;align-contentalign-content:;" >
+        /// Before use this action, ensure you got permission token named "wallet-state" or "all-permissions"
+        /// from endpoint /api/token/getPermissionToken
+        /// and added this token in Authorization header of HTTP request (Example: Authorization: Bearer your_auth_token)</b><br/> <br/> 
+        /// This action returns all oeprations made on user accounts like withdrawal, perplenishment, transfer and so on...
+        /// <br/> <br/> <br/> 
+        /// </remarks>
+        /// <response code="200">In case user provided valid currency name, new Account with provided currency created</response>
+        /// <response code="400">In case user provided invalid currency name</response>
+        /// <response code="401">In case user unauthorized</response>
+        /// <response code="403">In case user authorized, byt made it wrong 😏</response>
         [Authorize(Policy = Core.Models.AuthorizationPolicy.Names.ViewWalletStateAndHistory)]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(OperationDTO[]))]
