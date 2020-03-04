@@ -48,6 +48,11 @@ Follow these steps to get your development environment set up:
 
 ## Web api documentation avaliable in swagger
 
+
+### PS
+ > Logging, Error handling and Unit testing are not implemented (didn't have enough time)
+
+
 ![Docs](https://raw.githubusercontent.com/ShamilMS/Digital-Wallet-Indeed-Id-Test-Task/master/Docs/api-swagger.png)
 
 ### Expanded view

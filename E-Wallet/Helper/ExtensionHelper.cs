@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
 
 namespace EWallet.Helper
 {
@@ -65,8 +64,6 @@ namespace EWallet.Helper
                     .Where(x => (typeof(ValidationAttributeBase).IsAssignableFrom(x)) && !x.IsAbstract)
                     .ToList()
                     .ForEach(filterType => services.AddScoped(filterType));
-
         }
-
     }
 }

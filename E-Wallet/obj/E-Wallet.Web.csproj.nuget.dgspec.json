@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet\\E-Wallet.Web.csproj": {}
+    "e:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet\\E-Wallet.Web.csproj": {}
   },
   "projects": {
-    "E:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Application\\E-Wallet.Application.csproj": {
+    "e:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Application\\E-Wallet.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Application\\E-Wallet.Application.csproj",
+        "projectUniqueName": "e:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Application\\E-Wallet.Application.csproj",
         "projectName": "E-Wallet.Application",
-        "projectPath": "E:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Application\\E-Wallet.Application.csproj",
+        "projectPath": "e:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Application\\E-Wallet.Application.csproj",
         "packagesPath": "C:\\Users\\sovsh\\.nuget\\packages\\",
-        "outputPath": "E:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Application\\obj\\",
+        "outputPath": "e:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -30,8 +30,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "E:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Core\\E-Wallet.Core.csproj": {
-                "projectPath": "E:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Core\\E-Wallet.Core.csproj"
+              "e:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Core\\E-Wallet.Core.csproj": {
+                "projectPath": "e:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Core\\E-Wallet.Core.csproj"
               }
             }
           }
@@ -77,9 +77,6 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
@@ -88,14 +85,14 @@
         }
       }
     },
-    "E:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Core\\E-Wallet.Core.csproj": {
+    "e:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Core\\E-Wallet.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Core\\E-Wallet.Core.csproj",
+        "projectUniqueName": "e:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Core\\E-Wallet.Core.csproj",
         "projectName": "E-Wallet.Core",
-        "projectPath": "E:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Core\\E-Wallet.Core.csproj",
+        "projectPath": "e:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Core\\E-Wallet.Core.csproj",
         "packagesPath": "C:\\Users\\sovsh\\.nuget\\packages\\",
-        "outputPath": "E:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Core\\obj\\",
+        "outputPath": "e:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -161,14 +158,14 @@
         }
       }
     },
-    "E:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Infrastructure\\E-Wallet.Persitence.csproj": {
+    "e:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Infrastructure\\E-Wallet.Persitence.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Infrastructure\\E-Wallet.Persitence.csproj",
+        "projectUniqueName": "e:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Infrastructure\\E-Wallet.Persitence.csproj",
         "projectName": "E-Wallet.Persitence",
-        "projectPath": "E:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Infrastructure\\E-Wallet.Persitence.csproj",
+        "projectPath": "e:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Infrastructure\\E-Wallet.Persitence.csproj",
         "packagesPath": "C:\\Users\\sovsh\\.nuget\\packages\\",
-        "outputPath": "E:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Infrastructure\\obj\\",
+        "outputPath": "e:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -187,8 +184,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "E:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Core\\E-Wallet.Core.csproj": {
-                "projectPath": "E:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Core\\E-Wallet.Core.csproj"
+              "e:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Core\\E-Wallet.Core.csproj": {
+                "projectPath": "e:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Core\\E-Wallet.Core.csproj"
               }
             }
           }
@@ -248,14 +245,14 @@
         }
       }
     },
-    "E:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet\\E-Wallet.Web.csproj": {
+    "e:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet\\E-Wallet.Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet\\E-Wallet.Web.csproj",
+        "projectUniqueName": "e:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet\\E-Wallet.Web.csproj",
         "projectName": "E-Wallet.Web",
-        "projectPath": "E:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet\\E-Wallet.Web.csproj",
+        "projectPath": "e:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet\\E-Wallet.Web.csproj",
         "packagesPath": "C:\\Users\\sovsh\\.nuget\\packages\\",
-        "outputPath": "E:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet\\obj\\",
+        "outputPath": "e:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -274,11 +271,11 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "E:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Application\\E-Wallet.Application.csproj": {
-                "projectPath": "E:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Application\\E-Wallet.Application.csproj"
+              "e:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Application\\E-Wallet.Application.csproj": {
+                "projectPath": "e:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Application\\E-Wallet.Application.csproj"
               },
-              "E:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Infrastructure\\E-Wallet.Persitence.csproj": {
-                "projectPath": "E:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Infrastructure\\E-Wallet.Persitence.csproj"
+              "e:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Infrastructure\\E-Wallet.Persitence.csproj": {
+                "projectPath": "e:\\Documents\\Projects\\Indeed Id\\Project\\src\\E-Wallet\\E-Wallet.Infrastructure\\E-Wallet.Persitence.csproj"
               }
             }
           }

@@ -1,9 +1,9 @@
-﻿using EWallet.Core.Models.DTO;
+﻿using EWallet.Core.Models.Domain;
+using EWallet.Core.Models.DTO;
 using EWallet.Core.Services.Persistence;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
-using EWallet.Core.Models.Domain;
 
 namespace EWallet.Core.Request_Handlers.Users
 {

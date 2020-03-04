@@ -42,7 +42,6 @@ namespace EWallet.Application.Services
         }
 
 
-
         public async Task<IEnumerable<PermissionClaim>> BuildClaimsAsync(IEnumerable<string> permissionsNames)
         {
             await EnsurePermissionsInitialized();
